@@ -130,6 +130,12 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 't
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
     Route::get('routes', 'AdminDetailsController@listRoutes');
     Route::get('active-users', 'AdminDetailsController@activeUsers');
+
+    Route::resource('plans', 'PlanController', [
+      'names' => [
+          'index'   => 'plans',
+      ],
+    ]);
 });
 
 Route::redirect('/php', '/phpinfo', 301);
