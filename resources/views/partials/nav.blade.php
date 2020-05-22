@@ -62,10 +62,11 @@
                             {!! trans('Plans') !!}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('plans') }}">
+                            <a class="dropdown-item {{ Request::is('plans') ? 'active' : null }}" href="{{ route('plans') }}">
                                 {!! trans('All Plans') !!}
                             </a>
-                            <a class="dropdown-item" href="{{ route('plans.create') }}">
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item {{ Request::is('plans.create') ? 'active' : null }}" href="{{ route('plans.create') }}">
                                 {!! trans('Create New Plan') !!}
                             </a>
                         </div>
