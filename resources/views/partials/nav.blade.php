@@ -71,6 +71,20 @@
                             </a>
                         </div>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {!! trans('Memberships') !!}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item {{ Request::is('memberships') ? 'active' : null }}" href="{{ route('memberships') }}">
+                                {!! trans('All Memberships') !!}
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item {{ Request::is('memberships/create') ? 'active' : null }}" href="{{ route('memberships.create') }}">
+                                {!! trans('Create New Membership') !!}
+                            </a>
+                        </div>
+                    </li>
                 @endrole
             </ul>
             {{-- Right Side Of Navbar --}}

@@ -16,7 +16,7 @@ class PlanController extends Controller
      {
          //
          $plans = Plan::all();
-         return view('pages.plans.list', compact('plans','plans'));
+         return view('pages.plans.list', compact('plans'));
      }
 
      /**
@@ -40,15 +40,15 @@ class PlanController extends Controller
      {
          //
          $request->validate([
-             'txtFirstName'=>'required',
-             'txtLastName'=> 'required',
-             'txtAddress' => 'required'
+             'plan_name'=>'required',
+             'description'=> 'required',
+             'price' => 'required'
          ]);
 
          $plan = new Plan([
-             'first_name' => $request->get('txtFirstName'),
-             'last_name'=> $request->get('txtLastName'),
-             'address'=> $request->get('txtAddress')
+             'plan_name' => $request->get('plan_name'),
+             'description'=> $request->get('description'),
+             'price'=> $request->get('price')
          ]);
 
          $plan->save();
@@ -91,16 +91,16 @@ class PlanController extends Controller
          //
 
          $request->validate([
-             'txtFirstName'=>'required',
-             'txtLastName'=> 'required',
-             'txtAddress' => 'required'
+             'plan_name'=>'required',
+             'description'=> 'required',
+             'price' => 'required'
          ]);
 
 
          $plan = Plan::find($id);
-         $plan->first_name = $request->get('txtFirstName');
-         $plan->last_name = $request->get('txtLastName');
-         $plan->address = $request->get('txtAddress');
+         $plan->plan_name = $request->get('plan_name');
+         $plan->description = $request->get('description');
+         $plan->price = $request->get('price');
 
          $plan->update();
 

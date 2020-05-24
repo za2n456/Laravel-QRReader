@@ -136,6 +136,12 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 't
           'index'   => 'plans',
       ],
     ]);
+    
+    Route::resource('memberships', 'MembershipController', [
+        'names' => [
+            'index'   => 'memberships',
+        ],
+    ]);
 });
 
 Route::redirect('/php', '/phpinfo', 301);
