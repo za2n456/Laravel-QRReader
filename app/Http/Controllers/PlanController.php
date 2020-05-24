@@ -27,7 +27,7 @@ class PlanController extends Controller
      public function create()
      {
          //
-         return view('plan.create');
+         return view('pages.plans.create');
      }
 
      /**
@@ -64,7 +64,7 @@ class PlanController extends Controller
      public function show(Plan $plan)
      {
          //
-         return view('plan.view',compact('plan'));
+         return view('pages.plans.view',compact('plan'));
      }
 
      /**
@@ -76,7 +76,7 @@ class PlanController extends Controller
      public function edit(Plan $plan)
      {
          //
-         return view('plan.edit',compact('plan'));
+         return view('pages.plans.edit',compact('plan'));
      }
 
      /**

@@ -66,7 +66,7 @@
                                 {!! trans('All Plans') !!}
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item {{ Request::is('plans.create') ? 'active' : null }}" href="{{ route('plans.create') }}">
+                            <a class="dropdown-item {{ Request::is('plans/create') ? 'active' : null }}" href="{{ route('plans.create') }}">
                                 {!! trans('Create New Plan') !!}
                             </a>
                         </div>
