@@ -14,13 +14,17 @@ class CreateMembershipsTable extends Migration
     public function up()
     {
         Schema::create('memberships', function (Blueprint $table) {
-            $table->bigIncrements('id')->index();
-            $table->integer('user_id');
-            $table->integer('plan_id');
-            $table->integer('invoice_id');
+            $table->id();
+            $table->unsignedBigInteger('user_id')->unsigned()->index();
+            $table->unsignedBigInteger('plan_id')->unsigned();
+            $table->unsignedBigInteger('invoice_id')->unsigned();
             $table->integer('start_date');
             $table->integer('end_date');
             $table->timestamps();
+            //Relationships
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('plan_id')->references('id')->on('plans');
+            $table->foreign('invoice_id')->references('id')->on('invoices');
         });
     }
 
