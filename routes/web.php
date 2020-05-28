@@ -43,18 +43,18 @@ Route::group(['middleware' => ['web', 'activity', 'checkblocked']], function () 
 });
 
 // Registered and Activated User Routes
-Route::group(['middleware' => ['auth', 'activated', 'activity', 'checkblocked']], function () {
+Route::group(['prefix' => 'manage', 'middleware' => ['auth', 'activated', 'activity', 'checkblocked']], function () {
 
     // Activation Routes
     Route::get('/activation-required', ['uses' => 'Auth\ActivateController@activationRequired'])->name('activation-required');
-    Route::get('/logout', ['uses' => 'Auth\LoginController@logout'])->name('logout');
+    //Route::get('/logout', ['uses' => 'Auth\LoginController@logout'])->name('logout');
 });
 
 // Registered and Activated User Routes
-Route::group(['middleware' => ['auth', 'activated', 'activity', 'twostep', 'checkblocked']], function () {
+Route::group(['prefix' => 'manage', 'middleware' => ['auth', 'activated', 'activity', 'twostep', 'checkblocked']], function () {
 
     //  Homepage Route - Redirect based on user role is in controller.
-    Route::get('/home', ['as' => 'public.home',   'uses' => 'UserController@index']);
+    Route::get('dashboard', ['as' => 'public.home',   'uses' => 'UserController@index'])->name('home');
 
     // Show users profile - viewable by other users.
     Route::get('profile/{username}', [
@@ -64,13 +64,16 @@ Route::group(['middleware' => ['auth', 'activated', 'activity', 'twostep', 'chec
 });
 
 // Registered, activated, and is current user routes.
-Route::group(['middleware' => ['auth', 'activated', 'currentUser', 'activity', 'twostep', 'checkblocked']], function () {
+Route::group(['prefix' => 'manage', 'middleware' => ['auth', 'activated', 'currentUser', 'activity', 'twostep', 'checkblocked']], function () {
 
     // User Profile and Account Routes
     Route::resource(
         'profile',
         'ProfilesController',
         [
+            'names' => [
+              'show'   => 'profile',
+            ],
             'only' => [
                 'show',
                 'edit',
@@ -102,8 +105,11 @@ Route::group(['middleware' => ['auth', 'activated', 'currentUser', 'activity', '
 });
 
 // Registered, activated, and is admin routes.
-Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 'twostep', 'checkblocked']], function () {
+Route::group(['prefix' => 'manage', 'middleware' => ['auth', 'activated', 'role:admin', 'activity', 'twostep', 'checkblocked']], function () {
     Route::resource('/users/deleted', 'SoftDeletesController', [
+        'names' => [
+          'index'   => 'deleteduser',
+        ],
         'only' => [
             'index', 'show', 'update', 'destroy',
         ],
@@ -127,19 +133,25 @@ Route::group(['middleware' => ['auth', 'activated', 'role:admin', 'activity', 't
         ],
     ]);
 
-    Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
-    Route::get('routes', 'AdminDetailsController@listRoutes');
-    Route::get('active-users', 'AdminDetailsController@activeUsers');
+    Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->name('logs');
+    Route::get('routes', 'AdminDetailsController@listRoutes')->name('routes');
+    Route::get('active-users', 'AdminDetailsController@activeUsers')->name('active-users');
 
     Route::resource('plans', 'PlanController', [
       'names' => [
           'index'   => 'plans',
       ],
     ]);
-    
+
     Route::resource('memberships', 'MembershipController', [
         'names' => [
             'index'   => 'memberships',
+        ],
+    ]);
+
+    Route::resource('invoices', 'InvoiceController', [
+        'names' => [
+            'index'   => 'invoices',
         ],
     ]);
 });

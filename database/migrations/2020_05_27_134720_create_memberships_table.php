@@ -22,9 +22,9 @@ class CreateMembershipsTable extends Migration
             $table->integer('end_date');
             $table->timestamps();
             //Relationships
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('plan_id')->references('id')->on('plans');
-            $table->foreign('invoice_id')->references('id')->on('invoices');
+            $table->foreign('invoice_id')->references('id')->on('invoices')->onDelete('cascade');
         });
     }
 

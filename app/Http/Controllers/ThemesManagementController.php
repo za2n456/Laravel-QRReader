@@ -72,7 +72,7 @@ class ThemesManagementController extends Controller
         $theme->taggable_id = $theme->id;
         $theme->save();
 
-        return redirect('themes/'.$theme->id)->with('success', trans('themes.createSuccess'));
+        return redirect()->route('themes.show', ['theme' => $theme->id])->with('success', trans('themes.createSuccess'));
     }
 
     /**
@@ -119,7 +119,7 @@ class ThemesManagementController extends Controller
 
         $theme->fill($input)->save();
 
-        return redirect('themes/'.$theme->id)->with('success', trans('themes.updateSuccess'));
+        return redirect()->route('themes.show', ['theme' => $theme->id])->with('success', trans('themes.updateSuccess'));
     }
 
     /**
@@ -136,7 +136,7 @@ class ThemesManagementController extends Controller
         if ($theme->id !== $default->id) {
             $theme->delete();
 
-            return redirect('themes')->with('success', trans('themes.deleteSuccess'));
+            return redirect()->route('themes')->with('success', trans('themes.deleteSuccess'));
         }
 
         return back()->with('error', trans('themes.deleteSelfError'));

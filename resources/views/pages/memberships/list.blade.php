@@ -20,8 +20,8 @@
               <th>User</th>
               <th>Plan</th>
               <th>Invoice</th>
-              <th>Start Date</th>
-              <th>End Date</th>
+              <th class="hidden-xs">Start Date</th>
+              <th class="hidden-xs">End Date</th>
               <th>Status</th>
               <th>Action</th>
           </tr>

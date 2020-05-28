@@ -109,7 +109,7 @@ class UsersManagementController extends Controller
         $user->attachRole($request->input('role'));
         $user->save();
 
-        return redirect('users')->with('success', trans('usersmanagement.createSuccess'));
+        return redirect()->route('users')->with('success', trans('usersmanagement.createSuccess'));
     }
 
     /**
@@ -230,7 +230,7 @@ class UsersManagementController extends Controller
             $user->save();
             $user->delete();
 
-            return redirect('users')->with('success', trans('usersmanagement.deleteSuccess'));
+            return redirect()->route('users')->with('success', trans('usersmanagement.deleteSuccess'));
         }
 
         return back()->with('error', trans('usersmanagement.deleteSelfError'));

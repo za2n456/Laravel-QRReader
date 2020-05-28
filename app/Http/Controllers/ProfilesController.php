@@ -134,7 +134,7 @@ class ProfilesController extends Controller
         $user->updated_ip_address = $ipAddress->getClientIp();
         $user->save();
 
-        return redirect('profile/'.$user->name.'/edit')->with('success', trans('profile.updateSuccess'));
+        return redirect()->route('profile.edit', ['profile' => $user->name])->with('success', trans('profile.updateSuccess'));
     }
 
     /**
@@ -195,7 +195,7 @@ class ProfilesController extends Controller
 
         $user->save();
 
-        return redirect('profile/'.$user->name.'/edit')->with('success', trans('profile.updateAccountSuccess'));
+        return redirect()->route('profile.edit', ['profile' => $user->name])->with('success', trans('profile.updateAccountSuccess'));
     }
 
     /**
@@ -219,7 +219,7 @@ class ProfilesController extends Controller
         $user->updated_ip_address = $ipAddress->getClientIp();
         $user->save();
 
-        return redirect('profile/'.$user->name.'/edit')->with('success', trans('profile.updatePWSuccess'));
+        return redirect()->route('profile.edit', ['profile' => $user->name])->with('success', trans('profile.updatePWSuccess'));
     }
 
     /**
@@ -237,7 +237,7 @@ class ProfilesController extends Controller
             $filename = 'avatar.'.$avatar->getClientOriginalExtension();
             $save_path = storage_path().'/users/id/'.$currentUser->id.'/uploads/images/avatar/';
             $path = $save_path.$filename;
-            $public_path = '/images/profile/'.$currentUser->id.'/avatar/'.$filename;
+            $public_path = '/manage/images/profile/'.$currentUser->id.'/avatar/'.$filename;
 
             // Make the user a folder and set permissions
             File::makeDirectory($save_path, $mode = 0755, true, true);
@@ -283,7 +283,7 @@ class ProfilesController extends Controller
         $ipAddress = new CaptureIpTrait();
 
         if ($user->id !== $currentUser->id) {
-            return redirect('profile/'.$user->name.'/edit')->with('error', trans('profile.errorDeleteNotYour'));
+            return redirect()->route('profile.edit', ['profile' => $user->name])->with('error', trans('profile.errorDeleteNotYour'));
         }
 
         // Create and encrypt user account restore token

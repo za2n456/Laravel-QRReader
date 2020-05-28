@@ -20,23 +20,19 @@
                                 {!! trans('titles.laravelroles') !!}
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item {{ Request::is('users', 'users/' . Auth::user()->id, 'users/' . Auth::user()->id . '/edit') ? 'active' : null }}" href="{{ url('/users') }}">
+                            <a class="dropdown-item {{ Request::is('manage/users', 'manage/users/' . Auth::user()->id, 'users/' . Auth::user()->id . '/edit') ? 'active' : null }}" href="{{ route('users') }}">
                                 {!! trans('titles.adminUserList') !!}
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item {{ Request::is('users/create') ? 'active' : null }}" href="{{ url('/users/create') }}">
+                            <a class="dropdown-item {{ Request::is('manage/users/create') ? 'active' : null }}" href="{{ route('users.create') }}">
                                 {!! trans('titles.adminNewUser') !!}
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item {{ Request::is('themes','themes/create') ? 'active' : null }}" href="{{ url('/themes') }}">
+                            <a class="dropdown-item {{ Request::is('manage/themes','themes/create') ? 'active' : null }}" href="{{ route('themes') }}">
                                 {!! trans('titles.adminThemesList') !!}
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item {{ Request::is('logs') ? 'active' : null }}" href="{{ url('/logs') }}">
-                                {!! trans('titles.adminLogs') !!}
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item {{ Request::is('activity') ? 'active' : null }}" href="{{ url('/activity') }}">
+                            <a class="dropdown-item {{ Request::is('manage/activity') ? 'active' : null }}" href="{{ route('activity') }}">
                                 {!! trans('titles.adminActivity') !!}
                             </a>
                             <div class="dropdown-divider"></div>
@@ -44,15 +40,15 @@
                                 {!! trans('titles.adminPHP') !!}
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item {{ Request::is('routes') ? 'active' : null }}" href="{{ url('/routes') }}">
+                            <a class="dropdown-item {{ Request::is('manage/routes') ? 'active' : null }}" href="{{ route('routes') }}">
                                 {!! trans('titles.adminRoutes') !!}
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item {{ Request::is('active-users') ? 'active' : null }}" href="{{ url('/active-users') }}">
+                            <a class="dropdown-item {{ Request::is('manage/active-users') ? 'active' : null }}" href="{{ route('active-users') }}">
                                 {!! trans('titles.activeUsers') !!}
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item {{ Request::is('blocker') ? 'active' : null }}" href="{{ route('laravelblocker::blocker.index') }}">
+                            <a class="dropdown-item {{ Request::is('manage/blocker') ? 'active' : null }}" href="{{ route('laravelblocker::blocker.index') }}">
                                 {!! trans('titles.laravelBlocker') !!}
                             </a>
                         </div>
@@ -62,11 +58,11 @@
                             {!! trans('Plans') !!}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item {{ Request::is('plans') ? 'active' : null }}" href="{{ route('plans') }}">
+                            <a class="dropdown-item {{ Request::is('manage/plans') ? 'active' : null }}" href="{{ route('plans') }}">
                                 {!! trans('All Plans') !!}
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item {{ Request::is('plans/create') ? 'active' : null }}" href="{{ route('plans.create') }}">
+                            <a class="dropdown-item {{ Request::is('manage/plans/create') ? 'active' : null }}" href="{{ route('plans.create') }}">
                                 {!! trans('Create New Plan') !!}
                             </a>
                         </div>
@@ -76,12 +72,26 @@
                             {!! trans('Memberships') !!}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item {{ Request::is('memberships') ? 'active' : null }}" href="{{ route('memberships') }}">
+                            <a class="dropdown-item {{ Request::is('manage/memberships') ? 'active' : null }}" href="{{ route('memberships') }}">
                                 {!! trans('All Memberships') !!}
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item {{ Request::is('memberships/create') ? 'active' : null }}" href="{{ route('memberships.create') }}">
+                            <a class="dropdown-item {{ Request::is('manage/memberships/create') ? 'active' : null }}" href="{{ route('memberships.create') }}">
                                 {!! trans('Create New Membership') !!}
+                            </a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {!! trans('Invoices') !!}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item {{ Request::is('manage/invoices') ? 'active' : null }}" href="{{ route('invoices') }}">
+                                {!! trans('All Invoices') !!}
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item {{ Request::is('manage/invoices/create') ? 'active' : null }}" href="{{ route('invoices.create') }}">
+                                {!! trans('Create New Invoice') !!}
                             </a>
                         </div>
                     </li>
@@ -104,7 +114,7 @@
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item {{ Request::is('profile/'.Auth::user()->name, 'profile/'.Auth::user()->name . '/edit') ? 'active' : null }}" href="{{ url('/profile/'.Auth::user()->name) }}">
+                            <a class="dropdown-item {{ Request::is('profile/'.Auth::user()->name, 'profile/'.Auth::user()->name . '/edit') ? 'active' : null }}" href="{{ route('profile', ['profile' => Auth::user()->name]) }}">
                                 {!! trans('titles.profile') !!}
                             </a>
                             <div class="dropdown-divider"></div>
