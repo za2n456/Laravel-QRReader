@@ -17,7 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 // Homepage Route
 Route::group(['middleware' => ['web', 'checkblocked']], function () {
-    Route::get('/', 'WelcomeController@welcome')->name('welcome');
+    Route::get('/', 'FrontendController@index')->name('homepage');
+    Route::get('/select-plan/{plan}', 'FrontendController@select')->name('select.plan');
     Route::get('/terms', 'TermsController@terms')->name('terms');
 });
 
