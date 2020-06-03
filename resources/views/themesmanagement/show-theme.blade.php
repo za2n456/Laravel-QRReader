@@ -47,7 +47,7 @@
             <div class="card">
                 <div class="card-header">
                     {{ trans('themes.showTitle') }}
-                    <a href="/themes/" class="btn btn-primary btn-sm pull-right">
+                    <a href="{{route('themes')}}" class="btn btn-primary btn-sm pull-right">
                       <i class="fa fa-fw fa-mail-reply" aria-hidden="true"></i>
                       {{ trans('themes.showBackBtn') }}
                     </a>
@@ -101,11 +101,11 @@
                 <div class="card-footer">
                     <div class="row pt-2">
                         <div class="col-sm-6 mb-2">
-                            <a href="/themes/{{$theme->id}}/edit" class="btn btn-small btn-info btn-block">
+                            <a href="{{route('themes.edit', $theme->id)}}" class="btn btn-small btn-info btn-block">
                                 <i class="fa fa-pencil fa-fw" aria-hidden="true"></i> Edit<span class="hidden-sm"> this</span><span class="hidden-sm"> Theme</span>
                             </a>
                         </div>
-                        {!! Form::open(array('url' => 'themes/' . $theme->id, 'class' => 'col-sm-6 mb-2')) !!}
+                        {!! Form::open(array('url' => route('themes.destroy', $theme->id), 'class' => 'col-sm-6 mb-2')) !!}
                             {!! Form::hidden('_method', 'DELETE') !!}
                             {!! Form::button('<i class="fa fa-trash-o fa-fw" aria-hidden="true"></i> Delete<span class="hidden-sm"> this</span><span class="hidden-sm"> Theme</span>', array('class' => 'btn btn-danger btn-block btn-flat','type' => 'button', 'data-toggle' => 'modal', 'data-target' => '#confirmDelete', 'data-title' => trans('themes.confirmDeleteHdr'), 'data-message' => trans('themes.confirmDelete'))) !!}
                         {!! Form::close() !!}

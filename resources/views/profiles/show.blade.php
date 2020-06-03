@@ -118,13 +118,13 @@
 
                         @if ($user->profile)
                             @if ($currentUser->id == $user->id)
-                                {!! HTML::icon_link(URL::to('/profile/'.$currentUser->name.'/edit'), 'fa fa-fw fa-cog', trans('titles.editProfile'), array('class' => 'btn btn-small btn-info btn-block')) !!}
+                                {!! HTML::icon_link(route('profile.edit', $currentUser->name), 'fa fa-fw fa-cog', trans('titles.editProfile'), array('class' => 'btn btn-small btn-info btn-block')) !!}
                             @endif
                         @else
                             <p>
                                 {{ trans('profile.noProfileYet') }}
                             </p>
-                            {!! HTML::icon_link(URL::to('/profile/'.$currentUser->name.'/edit'), 'fa fa-fw fa-plus ', trans('titles.createProfile'), array('class' => 'btn btn-small btn-info btn-block')) !!}
+                            {!! HTML::icon_link(route('profile.edit', $currentUser->name), 'fa fa-fw fa-plus ', trans('titles.createProfile'), array('class' => 'btn btn-small btn-info btn-block')) !!}
                         @endif
                     </div>
                 </div>

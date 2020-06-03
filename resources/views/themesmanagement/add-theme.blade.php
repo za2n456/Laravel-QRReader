@@ -19,7 +19,7 @@
                             {{ trans('titles.adminThemesAdd') }}
                         </div>
                         <div class="float-right">
-                            <a href="{{ url('/themes/') }}" class="btn btn-light btn-sm float-right" data-toggle="tooltip" data-placement="left" title="{{ trans('themes.backToThemesTt') }}">
+                            <a href="{{ route('themes') }}" class="btn btn-light btn-sm float-right" data-toggle="tooltip" data-placement="left" title="{{ trans('themes.backToThemesTt') }}">
                                 <i class="fa fa-fw fa-mail-reply" aria-hidden="true"></i>
                                 {!! trans('themes.backToThemesBtn') !!}
                             </a>

@@ -61,11 +61,11 @@
                             </div>
                         </div>
 
-                        <p class="text-center mb-3">
+                        <p class="text-center mb-4">
                             Or Login with
                         </p>
 
-                        @include('partials.socials')
+                        @include('partials.socials-icons')
 
                     </form>
                 </div>

@@ -31,7 +31,7 @@
 
                 {{ trans('themes.themesTitle') }} <strong>{{ count($themes) }}</strong> {{ trans('themes.themes') }}
 
-                <a href="/themes/create" class="btn btn-outline-secondary btn-sm pull-right mb-2">
+                <a href="{{route('themes.create')}}" class="btn btn-outline-secondary btn-sm pull-right mb-2">
                     <i class="fa fa-fw fa-plus" aria-hidden="true"></i>
                     {{ trans('themes.btnAddTheme') }}
                 </a>
@@ -46,7 +46,6 @@
                                 <th>{{ trans('themes.themesName') }}</th>
                                 <th class="hidden-xs hidden-sm hidden-md">{{ trans('themes.themesLink') }}</th>
                                 <th>{{ trans('themes.themesActions') }}</th>
-                                <th></th>
                                 <th></th>
                                 <th></th>
                             </tr>
@@ -101,19 +100,19 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <a class="btn btn-sm btn-success btn-block" href="{{ URL::to('themes/' . $aTheme->id) }}" data-toggle="tooltip" title="{{ trans('themes.themesBtnShow') }}">
+                                        <a class="btn btn-sm btn-success btn-block" href="{{ route('themes.show', $aTheme->id) }}" data-toggle="tooltip" title="{{ trans('themes.themesBtnShow') }}">
                                             <i class="fa fa-eye fa-fw" aria-hidden="true"></i>
                                             <span class="sr-only">{{ trans('themes.themesBtnShow') }}</span>
                                         </a>
                                     </td>
                                     <td>
-                                        <a class="btn btn-sm btn-info btn-block" href="{{ URL::to('themes/' . $aTheme->id . '/edit') }}" data-toggle="tooltip" title="{{ trans('themes.themesBtnEdit') }}">
+                                        <a class="btn btn-sm btn-info btn-block" href="{{ route('themes.edit', $aTheme->id) }}" data-toggle="tooltip" title="{{ trans('themes.themesBtnEdit') }}">
                                             <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>
                                             <span class="sr-only">{{ trans('themes.themesBtnEdit') }}</span>
                                         </a>
                                     </td>
                                     <td>
-                                        {!! Form::open(array('url' => 'themes/' . $aTheme->id, 'class' => '', 'data-toggle' => 'tooltip', 'title' => 'Delete Theme')) !!}
+                                        {!! Form::open(array('url' => route('themes.destroy', $aTheme->id), 'class' => '', 'data-toggle' => 'tooltip', 'title' => 'Delete Theme')) !!}
                                             {!! Form::hidden('_method', 'DELETE') !!}
                                             {!! Form::button('<i class="fa fa-trash-o fa-fw" aria-hidden="true"></i> <span class="sr-only">Delete Theme</span>', array('class' => 'btn btn-danger btn-sm','type' => 'button', 'style' =>'width: 100%;' ,'data-toggle' => 'modal', 'data-target' => '#confirmDelete', 'data-title' => trans('themes.confirmDeleteHdr'), 'data-message' => trans('themes.confirmDelete'))) !!}
                                         {!! Form::close() !!}

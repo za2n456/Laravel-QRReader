@@ -111,7 +111,7 @@
                                 <p class="text-center mb-4">
                                     Or Use Social Logins to Register
                                 </p>
-                                @include('partials.socials')
+                                @include('partials.socials-icons')
                             </div>
                         </div>
 
