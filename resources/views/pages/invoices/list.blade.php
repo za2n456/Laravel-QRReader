@@ -20,6 +20,7 @@
               <th>User</th>
               <th class="hidden-xs">Plan</th>
               <th class="hidden-xs">Total</th>
+			  <th>Payment Method</th>
               <th class="hidden-xs">Note</th>
               <th>Status</th>
               <th>Date</th>
@@ -31,6 +32,7 @@
                   <td>{{ $invoice->user_id }}</td>
                   <td class="hidden-xs">{{ $invoice->plan_id }}</td>
                   <td class="hidden-xs">{{ $invoice->total }}</td>
+				  <td>{{ $invoice->payment_method }}</td>
                   <td class="hidden-xs">{{ $invoice->note }}</td>
                   <td>{{ $invoice->status }}</td>
                   <td>{{ $invoice->created_at }}</td>

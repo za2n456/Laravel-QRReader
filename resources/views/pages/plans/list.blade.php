@@ -7,17 +7,17 @@
   <div class="card">
     <div class="card-header d-flex">
         <div class="col-lg-9">
-            <h3>All Plans</h3>
+            <h3>All Packages</h3>
         </div>
         <div class="col-lg-3 text-right">
-            <a class="btn btn-success" href="{{ route('plans.create') }}"><i class="fa fa-plus"></i><span class="hidden-xs"> Create New Plan</span></a>
+            <a class="btn btn-success" href="{{ route('plans.create') }}"><i class="fa fa-plus"></i><span class="hidden-xs"> Create New Package</span></a>
         </div>
     </div>
     <div class="card-body">
       <table class="table table-bordered">
           <tr>
               <th>No</th>
-              <th>Plan Name</th>
+              <th>Package Name</th>
               <th class="hidden-xs">Description</th>
               <th>Price</th>
               <th width="">Action</th>

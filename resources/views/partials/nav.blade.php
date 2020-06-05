@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-primary">
+<nav class="navbar navbar-expand-md navbar-dark bg-success">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
             {!! config('app.name', trans('titles.app')) !!}
@@ -27,7 +27,7 @@
                             <a class="dropdown-item {{ Request::is('manage/users/create') ? 'active' : null }}" href="{{ route('users.create') }}">
                                 {!! trans('titles.adminNewUser') !!}
                             </a>
-                            <div class="dropdown-divider"></div>
+                            <!--<div class="dropdown-divider"></div>
                             <a class="dropdown-item {{ Request::is('manage/themes','themes/create') ? 'active' : null }}" href="{{ route('themes') }}">
                                 {!! trans('titles.adminThemesList') !!}
                             </a>
@@ -50,20 +50,20 @@
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item {{ Request::is('manage/blocker') ? 'active' : null }}" href="{{ route('laravelblocker::blocker.index') }}">
                                 {!! trans('titles.laravelBlocker') !!}
-                            </a>
+                            </a>-->
                         </div>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {!! trans('Plans') !!}
+                            {!! trans('Packages') !!}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item {{ Request::is('manage/plans') ? 'active' : null }}" href="{{ route('plans') }}">
-                                {!! trans('All Plans') !!}
+                                {!! trans('All Packages') !!}
                             </a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item {{ Request::is('manage/plans/create') ? 'active' : null }}" href="{{ route('plans.create') }}">
-                                {!! trans('Create New Plan') !!}
+                                {!! trans('Create New Package') !!}
                             </a>
                         </div>
                     </li>

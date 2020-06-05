@@ -34,8 +34,8 @@
                   <td>{{ $membership->user_id }}</td>
                   <td>{{ $membership->plan_id }}</td>
                   <td>{{ $membership->invoice_id }}</td>
-                  <td class="hidden-xs">{!! $membership->start_date !!}</td>
-                  <td class="hidden-xs">{!! $membership->end_date !!}</td>
+                  <td class="hidden-xs">{{ date('d M Y', strtotime($membership->start_date)) }}</td>
+                  <td class="hidden-xs">{{ date('d M Y', strtotime($membership->end_date)) }}</td>
                   <td>Status</td>
                   <td>
                       <form action="{{ route('memberships.destroy',$membership->id) }}" method="POST">

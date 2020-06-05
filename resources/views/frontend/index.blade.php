@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 
-    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <!--<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
       <h1 class="display-4">Pricing</h1>
       <p class="lead">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It’s built with default Bootstrap components and utilities with little customization.</p>
     </div>
@@ -23,6 +23,19 @@
       </div>
       @endforeach
 
-    </div>
+    </div>-->
+	<div class="row">
+			@foreach ($plans as $plan)
+	<div class="col-md-4 col-sm-4 col-xs-12">
+        <div class="pri_table_list">
+			<h3 class="my-0">{{$plan->plan_name}}<br/> <span>{{$plan->price}}</span></h3>
+			<ol>
+			<li>{!!$plan->description!!}</li>
+			</ol>
+			<button>Book now</button>
+		</div>
+	</div>
+			@endforeach
+	</div>
 
 @endsection

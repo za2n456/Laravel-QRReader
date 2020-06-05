@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Invoice;
+use App\Models\User;
+use App\Plan;
 use Illuminate\Http\Request;
 
 class InvoiceController extends Controller
@@ -25,7 +27,9 @@ class InvoiceController extends Controller
      */
     public function create()
     {
-        //
+        $data['plans'] = Plan::all();
+		$data['users'] = User::all();
+        return view('pages.invoices.create', $data);
     }
 
     /**
@@ -36,7 +40,17 @@ class InvoiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+			'user_id' => 'required',
+            'plan_id' => 'required',
+			'payment_method' => 'required',
+			'status' => 'required',
+        ]);
+		
+		$plan = Plan::find($request->plan_id);
+		
+		Invoice::create(array('user_id' => $request->user_id, 'plan_id' => $request->plan_id, 'total' => $plan->price,'payment_method' => $request->payment_method, 'note' => $request->note, 'status' => $request->status));
+		return redirect('manage/invoices')->with('success', 'Invoice has been added');
     }
 
     /**
@@ -81,6 +95,7 @@ class InvoiceController extends Controller
      */
     public function destroy(Invoice $invoice)
     {
-        //
+        $invoice->delete();
+         return redirect('manage/invoices')->with('success', 'Invoice deleted successfully');
     }
 }

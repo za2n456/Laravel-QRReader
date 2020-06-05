@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Membership;
+use App\Plan;
+use App\Invoice;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class MembershipController extends Controller
@@ -25,7 +28,10 @@ class MembershipController extends Controller
      */
     public function create()
     {
-        //
+        $data['plans'] = Plan::all();
+		$data['users'] = User::all();
+		$data['invoices'] = Invoice::all();
+        return view('pages.memberships.create', $data);
     }
 
     /**
@@ -36,7 +42,20 @@ class MembershipController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+			'user_id' => 'required',
+            'plan_id' => 'required',
+			'invoice_id' => 'required',
+        ]);
+		
+		if (Plan::find($request->plan_id)->plan_name == 'Week') {
+			$enddate = '+1 week';
+		} else {
+			$enddate = '+1 month';
+		}
+		
+		Membership::create(array('user_id' => $request->user_id, 'plan_id' => $request->plan_id,'invoice_id' => $request->invoice_id, 'start_date' => date('Y-m-d'), 'end_date' => date('Y-m-d', strtotime($enddate))));
+        return redirect('manage/memberships')->with('success', 'Membership has been added');
     }
 
     /**
@@ -81,6 +100,7 @@ class MembershipController extends Controller
      */
     public function destroy(Membership $membership)
     {
-        //
+        $membership->delete();
+         return redirect('manage/memberships')->with('success', 'Mmebership deleted successfully');
     }
 }
