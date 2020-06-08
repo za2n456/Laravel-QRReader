@@ -136,8 +136,9 @@ class InvoiceController extends Controller
      */
     public function edit(Invoice $invoice)
     {
-		$data['plans'] = Plan::all();
-		$data['users'] = User::all();
+    		$data['plans'] = Plan::all();
+    		$data['users'] = User::all();
+        
         return view('pages.invoices.edit',$data, compact('invoice'));
 
     }
