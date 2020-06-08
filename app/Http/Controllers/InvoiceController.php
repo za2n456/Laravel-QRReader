@@ -168,11 +168,11 @@ class InvoiceController extends Controller
     		}
 
     		$invoice = Invoice::find($id);
-    		$invoice->user_id => $request->get('user_id');
-        $invoice->plan_id=> $request->get('plan_id');
-        $invoice->total=> $total;
-    		$invoice->payment_method=> $request->get('payment_method');
-        $invoice->status=> $status;
+    		$invoice->user_id = $request->get('user_id');
+        $invoice->plan_id = $request->get('plan_id');
+        $invoice->total = $total;
+    		$invoice->payment_method = $request->get('payment_method');
+        $invoice->status = $status;
 
         $invoice->update();
 
