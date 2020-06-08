@@ -6,6 +6,9 @@ use App\Invoice;
 use App\Models\User;
 use App\Plan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Session;
 
 class InvoiceController extends Controller
 {
@@ -31,6 +34,16 @@ class InvoiceController extends Controller
 		$data['users'] = User::all();
         return view('pages.invoices.create', $data);
     }
+	
+	public function userinvoice($id){
+		$order = Plan::find($id);
+		$user = Auth::user();
+		
+        if(Auth::guest()){
+        return Redirect::guest("login")->withSuccess('You have to login first');
+      }
+        return view('pages.invoices.userorder', $order, compact('order'));
+	 }
 
     /**
      * Store a newly created resource in storage.
@@ -44,13 +57,64 @@ class InvoiceController extends Controller
 			'user_id' => 'required',
             'plan_id' => 'required',
 			'payment_method' => 'required',
-			'status' => 'required',
         ]);
 		
 		$plan = Plan::find($request->plan_id);
+		$total = $plan->price;
 		
-		Invoice::create(array('user_id' => $request->user_id, 'plan_id' => $request->plan_id, 'total' => $plan->price,'payment_method' => $request->payment_method, 'note' => $request->note, 'status' => $request->status));
+		if ($request->payment_method == 'Cash') {
+			$status = 'Confirmed';
+		} else {
+			$status = 'On Process';
+		}
+		
+		$invoice = new Invoice([
+             'user_id' => $request->get('user_id'),
+             'plan_id'=> $request->get('plan_id'),
+             'total'=> $total,
+			 'payment_method'=> $request->get('payment_method'),
+             'status'=> $status,
+         ]);
+
+         $invoice->save();
+		 
 		return redirect('manage/invoices')->with('success', 'Invoice has been added');
+    }
+	
+	public function postInvoice(Request $request)
+    {
+        $request->validate([
+			'user_id' => 'required',
+            'plan_id' => 'required',
+			'payment_method' => 'required',
+        ]);
+		
+		$plan = Plan::find($request->plan_id);
+		$total = $plan->price;
+		
+		if ($request->payment_method == 'Cash') {
+			$status = 'Confirmed';
+		} else {
+			$status = 'On Process';
+		}
+		
+		$invoice = new Invoice([
+             'user_id' => $request->get('user_id'),
+             'plan_id'=> $request->get('plan_id'),
+             'total'=> $total,
+			 'payment_method'=> $request->get('payment_method'),
+             'status'=> $status,
+         ]);
+
+         $invoice->save();
+		 
+		return view('pages.invoices.confirmation', compact('invoice'));
+    }
+	
+	public function confrimation(Invoice $invoice)
+    {
+        $invoice = Invoice::all();
+        return view('pages.invoices.confirmation', compact('invoice'));
     }
 
     /**
@@ -72,7 +136,10 @@ class InvoiceController extends Controller
      */
     public function edit(Invoice $invoice)
     {
-        //
+		$data['plans'] = Plan::all();
+		$data['users'] = User::all();
+        return view('pages.invoices.edit',$data, compact('invoice'));
+		
     }
 
     /**
@@ -82,9 +149,37 @@ class InvoiceController extends Controller
      * @param  \App\Invoice  $invoice
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Invoice $invoice)
+    public function update(Request $request,$id)
     {
-        //
+		
+		$request->validate([
+			'user_id' => 'required',
+            'plan_id' => 'required',
+			'payment_method' => 'required',
+        ]);
+		
+		$invoice = Invoice::find($id);
+		
+		$plan = Plan::find($request->plan_id);
+		$total = $plan->price;
+		
+		if ($request->payment_method == 'Cash') {
+			$status = 'Confirmed';
+		} else {
+			$status = 'On Process';
+		}
+		
+		$invoice = new Invoice([
+             'user_id' => $request->get('user_id'),
+             'plan_id'=> $request->get('plan_id'),
+             'total'=> $total,
+			 'payment_method'=> $request->get('payment_method'),
+             'status'=> $status,
+         ]);
+
+         $invoice->update();
+		 
+		return redirect('manage/invoices')->with('success', 'Invoice has been updated');
     }
 
     /**

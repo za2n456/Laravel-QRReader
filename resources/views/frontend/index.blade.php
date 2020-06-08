@@ -27,13 +27,15 @@
 	<div class="row">
 			@foreach ($plans as $plan)
 	<div class="col-md-4 col-sm-4 col-xs-12">
+		<form action="{{ route('order',$plan->id) }}">
         <div class="pri_table_list">
 			<h3 class="my-0">{{$plan->plan_name}}<br/> <span>{{$plan->price}}</span></h3>
 			<ol>
 			<li>{!!$plan->description!!}</li>
 			</ol>
-			<button>Book now</button>
+			<button type="submit">Book now</button></a>	
 		</div>
+		</form>
 	</div>
 			@endforeach
 	</div>

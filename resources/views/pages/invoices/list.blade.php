@@ -7,7 +7,7 @@
   <div class="card">
     <div class="card-header d-flex">
         <div class="col-lg-9">
-            <h3>All Memberships</h3>
+            <h3>All Invoices</h3>
         </div>
         <div class="col-lg-3 text-right">
             <a class="btn btn-success" href="{{ route('invoices.create') }}"><i class="fa fa-plus"></i><span class="hidden-xs"> Create New Invoices</span></a>

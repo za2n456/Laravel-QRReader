@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Plan;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Session;
 
 class PlanController extends Controller
 {
@@ -119,4 +123,14 @@ class PlanController extends Controller
          $plan->delete();
          return redirect('/plans')->with('success', 'Plan deleted successfully');
      }
+	 
+	 public function orderplan($id){
+		$order = Plan::find($id);
+		$user = Auth::user();
+		
+        if(Auth::guest()){
+        return Redirect::guest("login")->withSuccess('You have to login first');
+      }
+        return view('pages.plans.order', $order, compact('order'));
+	 }
 }
