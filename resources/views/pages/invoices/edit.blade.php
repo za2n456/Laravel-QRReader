@@ -23,7 +23,7 @@
 			<div class="col-sm-10">
 				<select id="user_id" name="user_id" class="form-control">
 				@foreach ($users as $user)
-					<option value="{{$invoice->id}}">{{$user->user_name}}</option>
+					<option value="{{$user->id}}">{{$user->user_name}}</option>
 				@endforeach
 				</select>
 			</div>
@@ -33,7 +33,7 @@
 			<div class="col-sm-10">
 				<select id="plan_id" name="plan_id" class="form-control">
 				@foreach ($plans as $plan)
-					<option value="{{$invoice->id}}">{{$plan->plan_name}} - {{$plan->price}}
+					<option value="{{$plan->id}}">{{$plan->plan_name}} - {{$plan->price}}
 				@endforeach
 				</select>
 			</div>
