@@ -2865,7 +2865,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   methods: {
     onDecode: function onDecode(result) {
       //this.result = result
-      var details = result.split('-');
+      //const details = result.split('-');
+      var details = '(NRM)13335679-NN,ANDRANI SETYORINI-(NIK)1234567890123466-(KL)MALANG-(TL)12-FEB-1987- (ADD)PERUM KARANG DUREN PERMAI BLOK O-17, NO.978, DS. KARANG DUREN, KEC. PAKISAJI KAB. MALANG , PROV. JAWA TIMUR, 65112 (WA)081234567890,(CP)081234567891,(PY1)BPJSK1,1234567890123-(PY2) SINARMAS,98765432-(DA)AMOXCILIN,PARACETAMOL-(FA)SEAFOOD, SUSU'.split('-');
       var i;
 
       for (i = 0; i < details.length; i++) {
@@ -2874,9 +2875,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         this.nik = details[2].split(')')[1];
         this.kl = details[3].split(')')[1];
         this.tl = details[4].split(')')[1];
-        this.add = details[5].split(')')[1];
-        this.wa = details[5].split(')')[1].split(')')[1];
-        this.cp = details[5].split(')')[1].split(')')[2];
+        this.add = details[5].split(')')[1].split('(WA)')[0];
+        this.wa = details[5].split(')')[1].split(')')[1].split(',')[0];
+        this.cp = details[5].split(')')[1].split(')')[2].split(',')[0];
         this.py1 = details[5].split(')')[1].split(')')[3];
         this.py2 = details[9].split(')')[1];
         this.da = details[10].split(')')[1];
@@ -87297,7 +87298,7 @@ var render = function() {
               type: "text",
               name: "nama",
               id: "nama",
-              placeholder: "nama"
+              placeholder: "Nama"
             },
             domProps: { value: _vm.nama }
           })
