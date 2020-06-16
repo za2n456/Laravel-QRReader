@@ -21,10 +21,13 @@ window.Vue = require('vue');
 
 //Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('users-count', require('./components/UsersCount.vue').default);
+Vue.component('qr-scanner', require('./components/vue-qrcode-reader.vue').default);
+Vue.component('qr-upload', require('./components/vue-qrcode-upload.vue').default);
 
 const app = new Vue({
     el: '#app'
 });
+
 
 $.fn.extend({
     toggleText: function(a, b){
@@ -63,3 +66,5 @@ $.fn.extend({
         return !additions ? self : self.addClass(additions);
     }
 });
+
+//qr-scanner
