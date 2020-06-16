@@ -119,9 +119,9 @@ export default {
         this.nik = details[2].split(')')[1];
         this.kl = details[3].split(')')[1];
         this.tl = details[4].split(')')[1];
-        this.add = details[5].split(')')[1];
-        this.wa = details[5].split(')')[1].split(')')[1];
-        this.cp = details[5].split(')')[1].split(')')[2];
+        this.add = details[5].split(')')[1].split('(WA)')[0];
+        this.wa = details[5].split(')')[1].split(')')[1].split(',')[0];
+        this.cp = details[5].split(')')[1].split(')')[2].split(',')[0];
         this.py1 = details[5].split(')')[1].split(')')[3];
         this.py2 = details[9].split(')')[1];
         this.da = details[10].split(')')[1];
