@@ -38,19 +38,38 @@ class PasienController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'plan_name'=>'required',
-            'description'=> 'required',
-            'price' => 'required'
+            'nama'=>'required',
+            'nik'=> 'required|unique:pasiens',
+            'nrm' => 'required',
+            'kl' => 'required',
+            'tl' => 'required',
+            'add' => 'required',
+            'wa' => 'required',
+            'cp' => 'required',
+            'py1' => 'required',
+            'py2' => 'required',
+            'da' => 'required',
+            'fa' => 'required',
         ]);
 
-        $pasien = new Plan([
-            'plan_name' => $request->get('plan_name'),
-            'description'=> $request->get('description'),
-            'price'=> $request->get('price')
+        $pasien = new Pasien([
+            'nama' => $request->get('nama'),
+            'nik'=> $request->get('nik'),
+            'nrm'=> $request->get('nrm'),
+            'kl'=> $request->get('kl'),
+            'tl'=> $request->get('tl'),
+            'add'=> $request->get('add'),
+            'wa'=> $request->get('wa'),
+            'cp'=> $request->get('cp'),
+            'py1'=> $request->get('py1'),
+            'py2'=> $request->get('py2'),
+            'da'=> $request->get('da'),
+            'fa'=> $request->get('fa'),
         ]);
 
         $pasien->save();
-        return redirect('/pasien')->with('success', 'Pasien berhasil ditambahkan');
+        //return redirect('/pasien')->with('success', 'Pasien berhasil ditambahkan');
+        response()->json(['success'=>'Pasien berhasil ditambahkan']);
     }
 
     /**

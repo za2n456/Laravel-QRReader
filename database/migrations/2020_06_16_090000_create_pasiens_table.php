@@ -15,6 +15,18 @@ class CreatePasiensTable extends Migration
     {
         Schema::create('pasiens', function (Blueprint $table) {
             $table->id();
+            $table->string('nama');
+            $table->string('nik');
+            $table->string('nrm');
+            $table->string('kl');
+            $table->string('tl');
+            $table->string('add');
+            $table->string('wa');
+            $table->string('cp');
+            $table->string('py1');
+            $table->string('py2');
+            $table->string('da');
+            $table->string('fa');
             $table->timestamps();
         });
     }

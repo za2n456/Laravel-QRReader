@@ -1,8 +1,8 @@
 <template>
   <div>
-    <p class="error">{{ error }}</p>
-    <qrcode-stream @decode="onDecode" @init="onInit" />
+  <p class="error">{{ error }}</p>
 
+  <div v-if="nama">
     <div class="form-group row">
       <label for="nama" class="col-sm-2 col-form-label">Nama</label>
       <div class="col-sm-10">
@@ -81,6 +81,11 @@
       </div>
     </div>
   </div>
+  <div v-else>
+    <qrcode-stream @decode="onDecode" @init="onInit" />
+  </div>
+
+  </div>
 </template>
 
 <script>
@@ -111,23 +116,49 @@ export default {
   methods: {
     onDecode (result) {
       //this.result = result
-      //const details = result.split('-');
-      const details = ('(NRM)13335679-NN,ANDRANI SETYORINI-(NIK)1234567890123466-(KL)MALANG-(TL)12-FEB-1987- (ADD)PERUM KARANG DUREN PERMAI BLOK O-17, NO.978, DS. KARANG DUREN, KEC. PAKISAJI KAB. MALANG , PROV. JAWA TIMUR, 65112 (WA)081234567890,(CP)081234567891,(PY1)BPJSK1,1234567890123-(PY2) SINARMAS,98765432-(DA)AMOXCILIN,PARACETAMOL-(FA)SEAFOOD, SUSU').split('-');
+      const details = result.split('-');
+      //const details = ('(NRM)13335679-NN,ANDRANI SETYORINI-(NIK)1234567890123466-(KL)MALANG-(TL)12-FEB-1987- (ADD)PERUM KARANG DUREN PERMAI BLOK O-17, NO.978, DS. KARANG DUREN, KEC. PAKISAJI KAB. MALANG , PROV. JAWA TIMUR, 65112 (WA)081234567890,(CP)081234567891,(PY1)BPJSK1,1234567890123-(PY2) SINARMAS,98765432-(DA)AMOXCILIN,PARACETAMOL-(FA)SEAFOOD, SUSU').split('-');
       var i;
       for (i = 0; i < details.length; i++) {
-        this.nama = details[1];
-        this.nrm = details[0].split(')')[1];
-        this.nik = details[2].split(')')[1];
-        this.kl = details[3].split(')')[1];
-        this.tl = details[4].split(')')[1]+details[5]+details[6];
-        this.add = details[5].split(')')[1].split('(WA)')[0];
-        this.wa = details[5].split(')')[1].split(')')[1].split(',')[0];
-        this.cp = details[5].split(')')[1].split(')')[2].split(',')[0];
-        this.py1 = details[5].split(')')[1].split(')')[3];
-        this.py2 = details[9].split(')')[1];
-        this.da = details[10].split(')')[1];
-        this.fa = details[11].split(')')[1];
+        var nama = details[1];
+        var nrm = details[0].split(')')[1];
+        var nik = details[2].split(')')[1];
+        var kl = details[3].split(')')[1];
+        var tl = details[4].split(')')[1]+'-'+details[5]+'-'+details[6];
+        var add = details[7].split(')')[1]+'-'+details[8].split('(WA)')[0];
+        var wa = details[8].split(')')[1].split(',')[0];
+        var cp = details[8].split(')')[2].split(',')[0];
+        var py1 = details[8].split(')')[3];
+        var py2 = details[9].split(')')[1];
+        var da = details[10].split(')')[1];
+        var fa = details[11].split(')')[1];
       }
+      $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      });
+      $.ajax({
+         type:'POST',
+         url:'/pasien/store',
+         data:{nama:nama, nrm:nrm, nik:nik, kl:kl, tl:tl, add:add, wa:wa, cp:cp, py1:py1, py2:py2, da:da, fa:fa},
+         success:function(response){
+            console.log(response);
+         }
+      });
+
+      this.nama = nama;
+      this.nrm = nrm;
+      this.nik = nik;
+      this.kl = kl;
+      this.tl = tl;
+      this.add = add;
+      this.wa = wa;
+      this.cp = cp;
+      this.py1 = py1;
+      this.py2 = py2;
+      this.da = da;
+      this.fa = fa;
     },
 
     async onInit (promise) {

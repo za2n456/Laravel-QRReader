@@ -16,14 +16,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Homepage Route
-Route::group(['middleware' => ['web', 'checkblocked']], function () {
+Route::group(['middleware' => ['web']], function () {
     //Route::get('/', 'FrontendController@index')->name('homepage');
     Route::get('/', 'FrontendController@welcome')->name('welcome');
     Route::get('/select-plan/{plan}', 'FrontendController@select')->name('select.plan');
     Route::get('/terms', 'TermsController@terms')->name('terms');
-  	Route::get('plan/{id}', 'InvoiceController@userinvoice')->name('order');;
-  	Route::post('post-invoice', 'InvoiceController@postInvoice')->name('post-invoice');;
-  	Route::get('confirmation', 'InvoiceController@confirmation')->name('invoice');;
+  	Route::get('plan/{id}', 'InvoiceController@userinvoice')->name('order');
+  	Route::post('post-invoice', 'InvoiceController@postInvoice')->name('post-invoice');
+  	Route::get('confirmation', 'InvoiceController@confirmation')->name('invoice');
+    Route::get('pasien', 'PasienController@store')->name('pasien');
+  	Route::post('pasien/store', 'PasienController@store')->name('pasien.store');
+  	Route::post('pasien/{id}', 'PasienController@store')->name('pasien.update');
+  	Route::post('pasien', 'PasienController@store')->name('pasien.destroy');
 });
 
 // Authentication Routes
@@ -159,12 +163,6 @@ Route::group(['prefix' => 'manage', 'middleware' => ['auth', 'activated', 'role:
             'index'   => 'invoices',
 			'confirmation'   => 'invoice',
         ],
-    ]);
-
-    Route::resource('pasien', 'PasienController', [
-      'names' => [
-          'index'   => 'pasien',
-      ],
     ]);
 
 });
