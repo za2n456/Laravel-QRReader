@@ -25,8 +25,9 @@ Route::group(['middleware' => ['web']], function () {
   	Route::post('post-invoice', 'InvoiceController@postInvoice')->name('post-invoice');
   	Route::get('confirmation', 'InvoiceController@confirmation')->name('invoice');
     Route::get('pasien', 'PasienController@store')->name('pasien');
+    Route::get('pasien/show/{nik}', 'PasienController@show')->name('pasien.show');
   	Route::post('pasien/store', 'PasienController@store')->name('pasien.store');
-  	Route::post('pasien/{id}', 'PasienController@store')->name('pasien.update');
+  	Route::post('pasien/{id}', 'PasienController@update')->name('pasien.update');
   	Route::post('pasien', 'PasienController@store')->name('pasien.destroy');
 });
 

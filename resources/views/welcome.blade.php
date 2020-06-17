@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section('template_title')
-    {!! trans('Create New Plan') !!}
+    {!! trans('Input Pasien') !!}
 @endsection
 @section('content')
 <div class="container">
-<div class="col-lg-10 offset-lg-1">
+<div class="col-lg-12">
   <div class="card">
     <div class="card-header d-flex">
         <div class="col-lg-9">
@@ -17,7 +17,7 @@
     <div class="card-body">
       <form action="{{ route('pasien.store') }}" method="POST">
     		@csrf
-        <qr-scanner></qr-scanner>
+        <qr-upload></qr-upload>
 	     </form>
     </div>
   </div>

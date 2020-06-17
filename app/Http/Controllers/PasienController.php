@@ -15,7 +15,7 @@ class PasienController extends Controller
     public function index()
     {
         //
-        $pasiens = Plan::all();
+        $pasiens = Pasien::all();
         return view('pages.pasien.list', compact('pasiens'));
     }
 
@@ -69,7 +69,7 @@ class PasienController extends Controller
 
         $pasien->save();
         //return redirect('/pasien')->with('success', 'Pasien berhasil ditambahkan');
-        response()->json(['success'=>'Pasien berhasil ditambahkan']);
+        return response()->json(['success'=>'Pasien berhasil ditambahkan']);
     }
 
     /**
@@ -78,9 +78,16 @@ class PasienController extends Controller
      * @param  \App\Pasien  $pasien
      * @return \Illuminate\Http\Response
      */
-    public function show(Pasien $pasien)
+    public function show(Request $request, $nik)
     {
-        //
+        //$nik = $request->get('nik');
+        $found = 0;
+        $pasien = Pasien::where('nik', $nik)->first();
+
+        if($pasien){
+          $found = 1;
+        }
+        echo $found;
     }
 
     /**
