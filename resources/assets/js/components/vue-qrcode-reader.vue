@@ -10,7 +10,7 @@
         Data pasien sudah tersedia di sistem.
       </div>
       <div class="text-center">
-        <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        <a class="btn rounded-pill btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
           <i class="fa fa-camera"></i> Scan QR Code
         </a>
       </div>
@@ -112,13 +112,13 @@
   </div>
   <div v-else class="col-lg-12 px-0">
     <div class="text-center">
-      <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+      <a class="btn btn-primary rounded-pill" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
         <i class="fa fa-camera"></i> Scan QR Code
       </a>
     </div>
     <div class="collapse text-center" id="collapseExample">
       <p class="error">{{ error }}</p>
-      <qrcode-capture @decode="onDecode" @init="onInit"/>
+      <qrcode-stream @decode="onDecode" @init="onInit"/>
     </div>
   </div>
 

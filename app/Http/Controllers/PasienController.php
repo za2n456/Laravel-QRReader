@@ -111,16 +111,34 @@ class PasienController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'plan_name'=>'required',
-            'description'=> 'required',
-            'price' => 'required'
+            'nama'=>'required',
+            'nik'=> 'required',
+            'nrm' => 'required',
+            'kl' => 'required',
+            'tl' => 'required',
+            'add' => 'required',
+            'wa' => 'required',
+            'cp' => 'required',
+            'py1' => 'required',
+            'py2' => 'required',
+            'da' => 'required',
+            'fa' => 'required',
         ]);
 
 
-        $pasien = Pasen::find($id);
-        $pasien->plan_name = $request->get('plan_name');
-        $pasien->description = $request->get('description');
-        $pasien->price = $request->get('price');
+        $pasien = Pasien::find($id);
+        $pasien->nama = $request->get('nama');
+        $pasien->nik = $request->get('nik');
+        $pasien->nrm = $request->get('nrm');
+        $pasien->kl = $request->get('kl');
+        $pasien->tl = $request->get('tl');
+        $pasien->add = $request->get('add');
+        $pasien->wa = $request->get('wa');
+        $pasien->cp = $request->get('cp');
+        $pasien->py1 = $request->get('py1');
+        $pasien->py2 = $request->get('py2');
+        $pasien->da = $request->get('da');
+        $pasien->fa = $request->get('fa');
 
         $pasien->update();
 

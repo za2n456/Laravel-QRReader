@@ -164,11 +164,14 @@ Route::group(['prefix' => 'manage', 'middleware' => ['auth', 'activated', 'role:
         ],
     ]);
 
-    Route::get('pasien', 'PasienController@index')->name('pasien');
-  	Route::get('pasien/create', 'PasienController@create')->name('pasien.create');
-  	Route::get('pasien/edit/{pasien}', 'PasienController@edit')->name('pasien.edit');
-  	Route::delete('pasien/{pasien}', 'PasienController@destroy')->name('pasien.destroy');
-  	Route::post('pasien/{id}', 'PasienController@update')->name('pasien.update');
+});
+
+Route::group(['prefix' => 'manage', 'middleware' => ['auth', 'activated', 'role:manager', 'activity', 'twostep', 'checkblocked']], function () {
+      Route::get('pasien', 'PasienController@index')->name('pasien');
+    	Route::get('pasien/create', 'PasienController@create')->name('pasien.create');
+    	Route::get('pasien/edit/{pasien}', 'PasienController@edit')->name('pasien.edit');
+    	Route::delete('pasien/{pasien}', 'PasienController@destroy')->name('pasien.destroy');
+    	Route::put('pasien/{id}', 'PasienController@update')->name('pasien.update');
 });
 
 Route::redirect('/php', '/phpinfo', 301);

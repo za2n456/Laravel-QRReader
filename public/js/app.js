@@ -87872,7 +87872,7 @@ var render = function() {
           [
             _c("p", { staticClass: "error" }, [_vm._v(_vm._s(_vm.error))]),
             _vm._v(" "),
-            _c("qrcode-capture", {
+            _c("qrcode-stream", {
               on: { decode: _vm.onDecode, init: _vm.onInit }
             })
           ],
@@ -87920,7 +87920,7 @@ var staticRenderFns = [
       _c(
         "a",
         {
-          staticClass: "btn btn-primary",
+          staticClass: "btn rounded-pill btn-primary",
           attrs: {
             "data-toggle": "collapse",
             href: "#collapseExample",
@@ -87961,7 +87961,7 @@ var staticRenderFns = [
       _c(
         "a",
         {
-          staticClass: "btn btn-primary",
+          staticClass: "btn btn-primary rounded-pill",
           attrs: {
             "data-toggle": "collapse",
             href: "#collapseExample",
@@ -100932,8 +100932,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/zazan/Public/laravel/resources/assets/js/app.js */"./resources/assets/js/app.js");
-module.exports = __webpack_require__(/*! /home/zazan/Public/laravel/resources/assets/sass/app.scss */"./resources/assets/sass/app.scss");
+__webpack_require__(/*! /run/media/zazan/Data/VMZAZAN/Localhost/htdocs/Laravel-QRReader/resources/assets/js/app.js */"./resources/assets/js/app.js");
+module.exports = __webpack_require__(/*! /run/media/zazan/Data/VMZAZAN/Localhost/htdocs/Laravel-QRReader/resources/assets/sass/app.scss */"./resources/assets/sass/app.scss");
 
 
 /***/ })
