@@ -2851,6 +2851,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2870,6 +2878,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       py2: '',
       da: '',
       fa: '',
+      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
       isAvailable: 0,
       responseMessage: '',
       error: ''
@@ -2919,27 +2928,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
         if (response.data == 1) {
           self.isAvailable = 1;
-        } else {
-          axios.post("pasien/store", {
-            nama: self.nama,
-            nrm: self.nrm,
-            nik: self.nik,
-            kl: self.kl,
-            tl: self.tl,
-            add: self.add,
-            wa: self.wa,
-            cp: self.cp,
-            py1: self.py1,
-            py2: self.py2,
-            da: self.da,
-            fa: self.fa
-          }).then(function (response) {
-            console.log(response);
-
-            if (response.data) {
-              self.responseMessage = response.data.success;
-            }
-          });
         }
       })["catch"](function (error) {
         console.log(error);
@@ -87514,297 +87502,315 @@ var render = function() {
           _vm.isAvailable === 1
             ? _c("div", [_c("span", [_vm._v("Data sudah tersedia.")])])
             : _c("div", [
-                _c("div", { staticClass: "form-group row" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "col-sm-2 col-form-label",
-                      attrs: { for: "nama" }
-                    },
-                    [_vm._v("Nama")]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-sm-10" }, [
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        name: "nama",
-                        id: "nama",
-                        placeholder: "Nama"
-                      },
-                      domProps: { value: _vm.nama }
-                    })
+                _c("div", { staticClass: "card" }, [
+                  _c("div", { staticClass: "card-body" }, [
+                    _c(
+                      "form",
+                      { attrs: { action: "pasien/store", method: "POST" } },
+                      [
+                        _c("input", {
+                          attrs: { type: "hidden", name: "_token" },
+                          domProps: { value: _vm.csrf }
+                        }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group row" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "col-sm-2 col-form-label",
+                              attrs: { for: "nama" }
+                            },
+                            [_vm._v("Nama")]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-sm-10" }, [
+                            _c("input", {
+                              staticClass: "form-control",
+                              attrs: {
+                                type: "text",
+                                name: "nama",
+                                id: "nama",
+                                placeholder: "Nama"
+                              },
+                              domProps: { value: _vm.nama }
+                            })
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group row" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "col-sm-2 col-form-label",
+                              attrs: { for: "nik" }
+                            },
+                            [_vm._v("NIK")]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-sm-10" }, [
+                            _c("input", {
+                              staticClass: "form-control",
+                              attrs: {
+                                type: "text",
+                                name: "nik",
+                                id: "nik",
+                                placeholder: "NIK"
+                              },
+                              domProps: { value: _vm.nik }
+                            })
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group row" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "col-sm-2 col-form-label",
+                              attrs: { for: "nrm" }
+                            },
+                            [_vm._v("No. Rekam Medis")]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-sm-10" }, [
+                            _c("input", {
+                              staticClass: "form-control",
+                              attrs: {
+                                type: "text",
+                                name: "nrm",
+                                id: "nrm",
+                                placeholder: "No. Rekam Medis"
+                              },
+                              domProps: { value: _vm.nrm }
+                            })
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group row" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "col-sm-2 col-form-label",
+                              attrs: { for: "kl" }
+                            },
+                            [_vm._v("Tempat Lahir")]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-sm-10" }, [
+                            _c("input", {
+                              staticClass: "form-control",
+                              attrs: {
+                                type: "text",
+                                name: "kl",
+                                id: "kl",
+                                placeholder: "Tempat Lahir"
+                              },
+                              domProps: { value: _vm.kl }
+                            })
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group row" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "col-sm-2 col-form-label",
+                              attrs: { for: "tl" }
+                            },
+                            [_vm._v("Tanggal Lahir")]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-sm-10" }, [
+                            _c("input", {
+                              staticClass: "form-control",
+                              attrs: {
+                                type: "text",
+                                name: "tl",
+                                id: "tl",
+                                placeholder: "Tanggal Lahir"
+                              },
+                              domProps: { value: _vm.tl }
+                            })
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group row" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "col-sm-2 col-form-label",
+                              attrs: { for: "add" }
+                            },
+                            [_vm._v("Alamat")]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-sm-10" }, [
+                            _c(
+                              "textarea",
+                              {
+                                staticClass: "form-control",
+                                attrs: {
+                                  type: "text",
+                                  name: "add",
+                                  id: "add",
+                                  placeholder: "Alamat"
+                                }
+                              },
+                              [_vm._v(_vm._s(_vm.add))]
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group row" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "col-sm-2 col-form-label",
+                              attrs: { for: "wa" }
+                            },
+                            [_vm._v("Whatsapp")]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-sm-10" }, [
+                            _c("input", {
+                              staticClass: "form-control",
+                              attrs: {
+                                type: "text",
+                                name: "wa",
+                                id: "wa",
+                                placeholder: "Whatsapp"
+                              },
+                              domProps: { value: _vm.wa }
+                            })
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group row" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "col-sm-2 col-form-label",
+                              attrs: { for: "cp" }
+                            },
+                            [_vm._v("No. HP")]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-sm-10" }, [
+                            _c("input", {
+                              staticClass: "form-control",
+                              attrs: {
+                                type: "text",
+                                name: "cp",
+                                id: "cp",
+                                placeholder: "No. HP"
+                              },
+                              domProps: { value: _vm.cp }
+                            })
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group row" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "col-sm-2 col-form-label",
+                              attrs: { for: "py1" }
+                            },
+                            [_vm._v("Payment 1")]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-sm-10" }, [
+                            _c("input", {
+                              staticClass: "form-control",
+                              attrs: {
+                                type: "text",
+                                name: "py1",
+                                id: "py1",
+                                placeholder: "Payment 1"
+                              },
+                              domProps: { value: _vm.py1 }
+                            })
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group row" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "col-sm-2 col-form-label",
+                              attrs: { for: "py2" }
+                            },
+                            [_vm._v("Payment 2")]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-sm-10" }, [
+                            _c("input", {
+                              staticClass: "form-control",
+                              attrs: {
+                                type: "text",
+                                name: "py2",
+                                id: "py2",
+                                placeholder: "Payment 2"
+                              },
+                              domProps: { value: _vm.py2 }
+                            })
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group row" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "col-sm-2 col-form-label",
+                              attrs: { for: "da" }
+                            },
+                            [_vm._v("Alergi Obat")]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-sm-10" }, [
+                            _c("input", {
+                              staticClass: "form-control",
+                              attrs: {
+                                type: "text",
+                                name: "da",
+                                id: "da",
+                                placeholder: "Alergi Obat"
+                              },
+                              domProps: { value: _vm.da }
+                            })
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group row" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "col-sm-2 col-form-label",
+                              attrs: { for: "fa" }
+                            },
+                            [_vm._v("Alergi Makanan")]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-sm-10" }, [
+                            _c("input", {
+                              staticClass: "form-control",
+                              attrs: {
+                                type: "text",
+                                name: "fa",
+                                id: "fa",
+                                placeholder: "Alergi Makanan"
+                              },
+                              domProps: { value: _vm.fa }
+                            })
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(0),
+                        _vm._v(" "),
+                        _c("span", [_vm._v(_vm._s(_vm.responseMessage))])
+                      ]
+                    )
                   ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group row" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "col-sm-2 col-form-label",
-                      attrs: { for: "nik" }
-                    },
-                    [_vm._v("NIK")]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-sm-10" }, [
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        name: "nik",
-                        id: "nik",
-                        placeholder: "NIK"
-                      },
-                      domProps: { value: _vm.nik }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group row" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "col-sm-2 col-form-label",
-                      attrs: { for: "nrm" }
-                    },
-                    [_vm._v("No. Rekam Medis")]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-sm-10" }, [
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        name: "nrm",
-                        id: "nrm",
-                        placeholder: "No. Rekam Medis"
-                      },
-                      domProps: { value: _vm.nrm }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group row" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "col-sm-2 col-form-label",
-                      attrs: { for: "kl" }
-                    },
-                    [_vm._v("Tempat Lahir")]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-sm-10" }, [
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        name: "kl",
-                        id: "kl",
-                        placeholder: "Tempat Lahir"
-                      },
-                      domProps: { value: _vm.kl }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group row" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "col-sm-2 col-form-label",
-                      attrs: { for: "tl" }
-                    },
-                    [_vm._v("Tanggal Lahir")]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-sm-10" }, [
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        name: "tl",
-                        id: "tl",
-                        placeholder: "Tanggal Lahir"
-                      },
-                      domProps: { value: _vm.tl }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group row" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "col-sm-2 col-form-label",
-                      attrs: { for: "add" }
-                    },
-                    [_vm._v("Alamat")]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-sm-10" }, [
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        name: "add",
-                        id: "add",
-                        placeholder: "Alamat"
-                      },
-                      domProps: { value: _vm.add }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group row" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "col-sm-2 col-form-label",
-                      attrs: { for: "wa" }
-                    },
-                    [_vm._v("Whatsapp")]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-sm-10" }, [
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        name: "wa",
-                        id: "wa",
-                        placeholder: "Whatsapp"
-                      },
-                      domProps: { value: _vm.wa }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group row" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "col-sm-2 col-form-label",
-                      attrs: { for: "cp" }
-                    },
-                    [_vm._v("No. HP")]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-sm-10" }, [
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        name: "cp",
-                        id: "cp",
-                        placeholder: "No. HP"
-                      },
-                      domProps: { value: _vm.cp }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group row" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "col-sm-2 col-form-label",
-                      attrs: { for: "py1" }
-                    },
-                    [_vm._v("Payment 1")]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-sm-10" }, [
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        name: "py1",
-                        id: "py1",
-                        placeholder: "Payment 1"
-                      },
-                      domProps: { value: _vm.py1 }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group row" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "col-sm-2 col-form-label",
-                      attrs: { for: "py2" }
-                    },
-                    [_vm._v("Payment 2")]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-sm-10" }, [
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        name: "py2",
-                        id: "py2",
-                        placeholder: "Payment 2"
-                      },
-                      domProps: { value: _vm.py2 }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group row" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "col-sm-2 col-form-label",
-                      attrs: { for: "da" }
-                    },
-                    [_vm._v("Alergi Obat")]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-sm-10" }, [
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        name: "da",
-                        id: "da",
-                        placeholder: "Alergi Obat"
-                      },
-                      domProps: { value: _vm.da }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group row" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "col-sm-2 col-form-label",
-                      attrs: { for: "fa" }
-                    },
-                    [_vm._v("Alergi Makanan")]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-sm-10" }, [
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        name: "fa",
-                        id: "fa",
-                        placeholder: "Alergi Makanan"
-                      },
-                      domProps: { value: _vm.fa }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _vm._m(0),
-                _vm._v(" "),
-                _c("span", [_vm._v(_vm._s(_vm.responseMessage))])
+                ])
               ])
         ])
       : _c(
@@ -87827,7 +87833,10 @@ var staticRenderFns = [
       _c("div", { staticClass: "col-sm-10" }, [
         _c(
           "button",
-          { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+          {
+            staticClass: "btn btn-block rounded-pill btn-primary",
+            attrs: { type: "submit" }
+          },
           [_vm._v("Submit")]
         )
       ])

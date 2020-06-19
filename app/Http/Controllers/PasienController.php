@@ -68,8 +68,8 @@ class PasienController extends Controller
         ]);
 
         $pasien->save();
-        //return redirect('/pasien')->with('success', 'Pasien berhasil ditambahkan');
-        return response()->json(['success'=>'Pasien berhasil ditambahkan']);
+        return redirect('/')->with('success', 'Pasien berhasil ditambahkan');
+        //return response()->json(['success'=>'Pasien berhasil ditambahkan']);
     }
 
     /**

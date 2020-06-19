@@ -6,14 +6,9 @@
 <div class="container">
   <div class="row">
   <div class="col-lg-12">
-    <div class="cards">
-      <div class="card-body">
-        <form action="{{ route('pasien.store') }}" method="POST">
-      		@csrf
-          <qr-scanner></qr-scanner>
-  	     </form>
-      </div>
-    </div>
+
+    <qr-scanner></qr-scanner>
+
   </div>
   </div>
 </div>

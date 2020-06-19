@@ -6,22 +6,9 @@
 <div class="container">
   <div class="row">
   <div class="col-lg-12">
-    <div class="card">
-      <div class="card-header d-flex">
-          <div class="col-lg-9">
-              Input Pasien
-          </div>
-          <div class="col-lg-3 text-right">
-              <a class="btn btn-light btn-sm" href="<?php echo e(route('pasien')); ?>"><i class="fa fa-fw fa-reply-all" aria-hidden="true"></i><span class="hidden-xs"> Back</span></a>
-          </div>
-      </div>
-      <div class="card-body">
-        <form action="<?php echo e(route('pasien.store')); ?>" method="POST">
-      		<?php echo csrf_field(); ?>
-          <qr-scanner></qr-scanner>
-  	     </form>
-      </div>
-    </div>
+
+    <qr-scanner></qr-scanner>
+
   </div>
   </div>
 </div>
