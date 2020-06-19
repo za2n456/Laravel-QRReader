@@ -76,7 +76,13 @@
 
         {{-- Scripts --}}
         <script src="{{ mix('/js/app.js') }}"></script>
-
+        <script>
+          window.setTimeout(function() {
+              $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                  $(this).remove();
+              });
+          }, 2000);
+        </script>
         @yield('footer_scripts')
 
     </body>
