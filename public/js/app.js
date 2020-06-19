@@ -2869,6 +2869,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -87510,6 +87513,12 @@ var render = function() {
           ? _c("div", [_vm._m(0)])
           : _c("div", [
               _c("div", { staticClass: "card" }, [
+                _c(
+                  "div",
+                  { staticClass: "card-header bg-secondary text-white " },
+                  [_vm._v("\n        Input Data Pasien\n      ")]
+                ),
+                _vm._v(" "),
                 _c("div", { staticClass: "card-body" }, [
                   _c(
                     "form",

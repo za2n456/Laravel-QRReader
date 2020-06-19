@@ -12,6 +12,9 @@
     </div>
     <div v-else>
       <div class="card">
+        <div class="card-header bg-secondary text-white ">
+          Input Data Pasien
+        </div>
         <div class="card-body">
           <form action="pasien/store" method="POST">
           <input type="hidden" name="_token" :value="csrf">

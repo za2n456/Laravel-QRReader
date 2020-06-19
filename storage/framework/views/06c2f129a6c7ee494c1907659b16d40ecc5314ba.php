@@ -76,7 +76,13 @@
 
         
         <script src="<?php echo e(mix('/js/app.js')); ?>"></script>
-
+        <script>
+          window.setTimeout(function() {
+              $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                  $(this).remove();
+              });
+          }, 2000);
+        </script>
         <?php echo $__env->yieldContent('footer_scripts'); ?>
 
     </body>
