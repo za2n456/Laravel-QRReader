@@ -23,7 +23,7 @@
 
         {{-- Styles --}}
         <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
-
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/css/mdb.min.css" rel="stylesheet">
         @yield('template_linked_css')
 
         <style type="text/css">
@@ -47,8 +47,7 @@
 
         @if (Auth::User() && (Auth::User()->profile) && $theme->link != null && $theme->link != 'null')
             <link rel="stylesheet" type="text/css" href="{{ $theme->link }}">
-        @else
-            <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootswatch/4.3.1/flatly/bootstrap.min.css">
+
         @endif
 
         @yield('head')

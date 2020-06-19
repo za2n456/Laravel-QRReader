@@ -3,7 +3,10 @@
   <p class="error">{{ error }}</p>
 
   <div v-if="nama">
-      <div v-if="isAvailable === 0">
+    <div v-if="isAvailable === 1">
+      <span>Data sudah tersedia.</span>
+    </div>
+    <div v-else>
       <div class="form-group row">
         <label for="nama" class="col-sm-2 col-form-label">Nama</label>
         <div class="col-sm-10">
@@ -81,14 +84,11 @@
           <button type="submit" class="btn btn-primary">Submit</button>
         </div>
       </div>
-      <span>{{store}}</span>
-    </div>
-    <div v-else>
       <span>{{responseMessage}}</span>
     </div>
   </div>
   <div v-else>
-    <qrcode-stream @decode="onDecode" @init="onInit" />
+    <qrcode-stream @decode="onDecode" @init="onInit"/>
   </div>
 
   </div>
@@ -116,7 +116,6 @@ export default {
       da: '',
       fa: '',
 
-      store: '',
       isAvailable: 0,
       responseMessage: '',
       error: ''
@@ -156,45 +155,40 @@ export default {
       this.py2 = py2;
       this.da = da;
       this.fa = fa;
-
-      axios.post('/pasien/store', {
-        params: {
-          nama : nama,
-          nrm: nrm,
-          nik: nik,
-          kl: kl,
-          tl: tl,
-          add: add,
-          wa: wa,
-          cp: cp,
-          py1: py1,
-          py2: py2,
-          da: da,
-          fa: fa,
-        }
-      })
-      .then(function (response) {
-          this.store = response.data;
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+      this.checkUser()
     },
     checkUser(){
-      var nik = this.nik.trim();
-       axios.get('/pasien/show', {
-         params: {
-           nik: nik
-         }
-       })
-       .then(function (response) {
-         this.isAvailable = response.data;
-         if(response.data == 0) {
-           this.responseMessage = "Data belum tersedia.";
+      var nik = this.nik;
+      let self = this;
+      axios.get('pasien/show/'+nik)
+      .then(function (response) {
+       console.log(response.data);
+        if(response.data == 1) {
+         self.isAvailable = 1;
          } else {
-           this.responseMessage = "Data sudah tersedia.";
+           axios.post("pasien/store", {
+               nama : self.nama,
+               nrm: self.nrm,
+               nik: self.nik,
+               kl: self.kl,
+               tl: self.tl,
+               add: self.add,
+               wa: self.wa,
+               cp: self.cp,
+               py1: self.py1,
+               py2: self.py2,
+               da: self.da,
+               fa: self.fa,
+             }
+           )
+           .then(function (response) {
+             console.log(response);
+              if(response.data) {
+               self.responseMessage = response.data.success;
+              }
+           })
          }
-       })
+        })
        .catch(function (error) {
          console.log(error);
        });

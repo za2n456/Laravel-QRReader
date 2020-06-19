@@ -2870,7 +2870,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       py2: '',
       da: '',
       fa: '',
-      store: '',
       isAvailable: 0,
       responseMessage: '',
       error: ''
@@ -2910,40 +2909,37 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.py2 = py2;
       this.da = da;
       this.fa = fa;
-      axios.post('/pasien/store', {
-        params: {
-          nama: nama,
-          nrm: nrm,
-          nik: nik,
-          kl: kl,
-          tl: tl,
-          add: add,
-          wa: wa,
-          cp: cp,
-          py1: py1,
-          py2: py2,
-          da: da,
-          fa: fa
-        }
-      }).then(function (response) {
-        this.store = response.data;
-      })["catch"](function (error) {
-        console.log(error);
-      });
+      this.checkUser();
     },
     checkUser: function checkUser() {
-      var nik = this.nik.trim();
-      axios.get('/pasien/show', {
-        params: {
-          nik: nik
-        }
-      }).then(function (response) {
-        this.isAvailable = response.data;
+      var nik = this.nik;
+      var self = this;
+      axios.get('pasien/show/' + nik).then(function (response) {
+        console.log(response.data);
 
-        if (response.data == 0) {
-          this.responseMessage = "Data belum tersedia.";
+        if (response.data == 1) {
+          self.isAvailable = 1;
         } else {
-          this.responseMessage = "Data sudah tersedia.";
+          axios.post("pasien/store", {
+            nama: self.nama,
+            nrm: self.nrm,
+            nik: self.nik,
+            kl: self.kl,
+            tl: self.tl,
+            add: self.add,
+            wa: self.wa,
+            cp: self.cp,
+            py1: self.py1,
+            py2: self.py2,
+            da: self.da,
+            fa: self.fa
+          }).then(function (response) {
+            console.log(response);
+
+            if (response.data) {
+              self.responseMessage = response.data.success;
+            }
+          });
         }
       })["catch"](function (error) {
         console.log(error);
@@ -87515,8 +87511,9 @@ var render = function() {
     _vm._v(" "),
     _vm.nama
       ? _c("div", [
-          _vm.isAvailable === 0
-            ? _c("div", [
+          _vm.isAvailable === 1
+            ? _c("div", [_c("span", [_vm._v("Data sudah tersedia.")])])
+            : _c("div", [
                 _c("div", { staticClass: "form-group row" }, [
                   _c(
                     "label",
@@ -87807,9 +87804,8 @@ var render = function() {
                 _vm._v(" "),
                 _vm._m(0),
                 _vm._v(" "),
-                _c("span", [_vm._v(_vm._s(_vm.store))])
+                _c("span", [_vm._v(_vm._s(_vm.responseMessage))])
               ])
-            : _c("div", [_c("span", [_vm._v(_vm._s(_vm.responseMessage))])])
         ])
       : _c(
           "div",
