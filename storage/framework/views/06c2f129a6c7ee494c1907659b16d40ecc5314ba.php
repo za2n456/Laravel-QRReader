@@ -58,11 +58,11 @@
 
             <?php echo $__env->make('partials.nav', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
-            <main>
+            <main class="py-4">
 
                 <div class="container">
                     <div class="row">
-                        <div class="col-12 px-0">
+                        <div class="col-12">
                             <?php echo $__env->make('partials.form-status', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                         </div>
                     </div>

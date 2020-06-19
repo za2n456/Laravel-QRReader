@@ -5,11 +5,9 @@
 <?php $__env->startSection('content'); ?>
 <div class="container">
   <div class="row">
-  <div class="col-lg-12">
 
     <qr-scanner></qr-scanner>
 
-  </div>
   </div>
 </div>
 <?php $__env->stopSection(); ?>

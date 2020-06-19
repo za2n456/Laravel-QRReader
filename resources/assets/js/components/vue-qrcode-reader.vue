@@ -1,14 +1,10 @@
 <template>
-  <div>
-
-  <p class="error">{{ error }}</p>
-
-  <div v-if="nama">
+  <div v-if="nama" class="col-lg-12">
     <div v-if="isAvailable === 1">
       <span>Data sudah tersedia.</span>
     </div>
     <div v-else>
-      <div class="card my-3">
+      <div class="card">
         <div class="card-body">
           <form action="pasien/store" method="POST">
           <input type="hidden" name="_token" :value="csrf">
@@ -95,11 +91,18 @@
       </div>
     </div>
   </div>
-  <div v-else>
-    <qrcode-stream @decode="onDecode" @init="onInit"/>
+  <div v-else class="col-lg-12 px-0">
+    <div class="text-center">
+      <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        <i class="fa fa-camera"></i> Scan QR Code
+      </a>
+    </div>
+    <div class="collapse text-center" id="collapseExample">
+      <p class="error">{{ error }}</p>
+      <qrcode-stream @decode="onDecode" @init="onInit"/>
+    </div>
   </div>
 
-  </div>
 </template>
 
 <script>
