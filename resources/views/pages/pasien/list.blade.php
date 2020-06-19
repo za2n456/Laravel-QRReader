@@ -7,10 +7,10 @@
   <div class="card">
     <div class="card-header d-flex">
         <div class="col-lg-9">
-            <h3>Data Pasien</h3>
+            <h4>Data Pasien</h4>
         </div>
         <div class="col-lg-3 text-right">
-            <a class="btn btn-success" href="{{ route('pasien.create') }}"><i class="fa fa-plus"></i><span class="hidden-xs"> Input Pasien</span></a>
+            <a class="btn btn-sm btn-success" href="{{ route('pasien.create') }}"><i class="fa fa-plus"></i><span class="hidden-xs"> Input Pasien</span></a>
         </div>
     </div>
     <div class="card-body">

@@ -87941,7 +87941,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "form-group row" }, [
-      _c("div", { staticClass: "col-sm-10" }, [
+      _c("div", { staticClass: "col-sm-12" }, [
         _c(
           "button",
           {

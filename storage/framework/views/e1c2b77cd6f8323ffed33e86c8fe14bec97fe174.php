@@ -32,7 +32,7 @@
                                 <?php echo trans('titles.adminNewUser'); ?>
 
                             </a>
-                            <!--<div class="dropdown-divider"></div>
+                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item <?php echo e(Request::is('manage/themes','themes/create') ? 'active' : null); ?>" href="<?php echo e(route('themes')); ?>">
                                 <?php echo trans('titles.adminThemesList'); ?>
 
@@ -61,7 +61,7 @@
                             <a class="dropdown-item <?php echo e(Request::is('manage/blocker') ? 'active' : null); ?>" href="<?php echo e(route('laravelblocker::blocker.index')); ?>">
                                 <?php echo trans('titles.laravelBlocker'); ?>
 
-                            </a>-->
+                            </a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -111,6 +111,25 @@
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item <?php echo e(Request::is('manage/invoices/create') ? 'active' : null); ?>" href="<?php echo e(route('invoices.create')); ?>">
                                 <?php echo trans('Create New Invoice'); ?>
+
+                            </a>
+                        </div>
+                    </li>
+                <?php endif; ?>
+                <?php if (Auth::check() && Auth::user()->hasRole('manager')): ?>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <?php echo trans('Pasien'); ?>
+
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item <?php echo e(Request::is('manage/pasien') ? 'active' : null); ?>" href="<?php echo e(route('pasien')); ?>">
+                                <?php echo trans('Semua Pasien'); ?>
+
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item <?php echo e(Request::is('manage/pasien/create') ? 'active' : null); ?>" href="<?php echo e(route('pasien.create')); ?>">
+                                <?php echo trans('Input Pasien'); ?>
 
                             </a>
                         </div>

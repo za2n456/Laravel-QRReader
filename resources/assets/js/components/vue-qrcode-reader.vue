@@ -100,7 +100,7 @@
               </div>
             </div>
             <div class="form-group row">
-              <div class="col-sm-10">
+              <div class="col-sm-12">
                 <button type="submit" class="btn btn-block rounded-pill btn-primary">Submit</button>
               </div>
             </div>

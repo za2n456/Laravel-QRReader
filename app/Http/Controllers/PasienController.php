@@ -98,7 +98,7 @@ class PasienController extends Controller
      */
     public function edit(Pasien $pasien)
     {
-        return view('pages.pasien.edit',compact('plan'));
+        return view('pages.pasien.edit',compact('pasien'));
     }
 
     /**
@@ -124,7 +124,7 @@ class PasienController extends Controller
 
         $pasien->update();
 
-        return redirect('/pasien')->with('success', 'Pasien berhasil diedit');
+        return redirect(route('pasien'))->with('success', 'Pasien berhasil diedit');
     }
 
     /**
@@ -136,6 +136,6 @@ class PasienController extends Controller
     public function destroy(Pasien $pasien)
     {
         $pasien->delete();
-        return redirect('/pasien')->with('success', 'Pasien berhasil dihapus');
+        return redirect(route('pasien'))->with('success', 'Pasien berhasil dihapus');
     }
 }

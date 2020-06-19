@@ -24,11 +24,9 @@ Route::group(['middleware' => ['web']], function () {
   	Route::get('plan/{id}', 'InvoiceController@userinvoice')->name('order');
   	Route::post('post-invoice', 'InvoiceController@postInvoice')->name('post-invoice');
   	Route::get('confirmation', 'InvoiceController@confirmation')->name('invoice');
-    Route::get('pasien', 'PasienController@store')->name('pasien');
+
     Route::get('pasien/show/{nik}', 'PasienController@show')->name('pasien.show');
   	Route::post('pasien/store', 'PasienController@store')->name('pasien.store');
-  	Route::post('pasien/{id}', 'PasienController@update')->name('pasien.update');
-  	Route::post('pasien', 'PasienController@store')->name('pasien.destroy');
 });
 
 // Authentication Routes
@@ -166,6 +164,11 @@ Route::group(['prefix' => 'manage', 'middleware' => ['auth', 'activated', 'role:
         ],
     ]);
 
+    Route::get('pasien', 'PasienController@index')->name('pasien');
+  	Route::get('pasien/create', 'PasienController@create')->name('pasien.create');
+  	Route::get('pasien/edit/{pasien}', 'PasienController@edit')->name('pasien.edit');
+  	Route::delete('pasien/{pasien}', 'PasienController@destroy')->name('pasien.destroy');
+  	Route::post('pasien/{id}', 'PasienController@update')->name('pasien.update');
 });
 
 Route::redirect('/php', '/phpinfo', 301);

@@ -52,5 +52,46 @@ class PermissionsTableSeeder extends Seeder
                 'model'       => 'Permission',
             ]);
         }
+
+
+        /*
+         * Add Permissions
+         *
+         */
+        if (Permission::where('name', '=', 'Can View Pasien')->first() === null) {
+            Permission::create([
+                'name'        => 'Can View Pasien',
+                'slug'        => 'view.pasien',
+                'description' => 'Can view pasien',
+                'model'       => 'Permission',
+            ]);
+        }
+
+        if (Permission::where('name', '=', 'Can Create Pasien')->first() === null) {
+            Permission::create([
+                'name'        => 'Can Create Pasien',
+                'slug'        => 'create.pasien',
+                'description' => 'Can create new pasien',
+                'model'       => 'Permission',
+            ]);
+        }
+
+        if (Permission::where('name', '=', 'Can Edit Pasien')->first() === null) {
+            Permission::create([
+                'name'        => 'Can Edit Pasien',
+                'slug'        => 'edit.pasien',
+                'description' => 'Can edit pasien',
+                'model'       => 'Permission',
+            ]);
+        }
+
+        if (Permission::where('name', '=', 'Can Delete Pasien')->first() === null) {
+            Permission::create([
+                'name'        => 'Can Delete Pasien',
+                'slug'        => 'delete.pasien',
+                'description' => 'Can delete pasien',
+                'model'       => 'Permission',
+            ]);
+        }
     }
 }

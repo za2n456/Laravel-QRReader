@@ -16,31 +16,85 @@
     </div>
     <div class="card-body">
       <form action="{{ route('pasien.update', $pasien->id) }}" method="POST">
-		@csrf
-		@method('PUT')
-		<div class="form-group row">
-			<label for="plan_name" class="col-sm-2 col-form-label">Plan Name</label>
-			<div class="col-sm-10">
-				<input type="text" name="plan_name" id="plan_name" class="form-control" value="{{ $plan->plan_name }}" placeholder="Plan Name">
-			</div>
-		</div>
-		<div class="form-group row">
-			<label for="description" class="col-sm-2 col-form-label">Description</label>
-			<div class="col-sm-10">
-				<textarea type="textarea" name="description" id="description" class="form-control" placeholder="Description">{{ $plan->description }}</textarea>
-			</div>
-		</div>
-		<div class="form-group row">
-			<label for="price" class="col-sm-2 col-form-label">Price</label>
-			<div class="col-sm-10">
-				<input type="number" name="price" id="price" class="form-control" value="{{ $plan->price }}" placeholder="Price">
-			</div>
-		</div>
-		<div class="form-group row">
-			<div class="col-sm-10">
-			  <button type="submit" class="btn btn-primary">Submit</button>
-			</div>
-	    </div>
+  		@csrf
+  		@method('PUT')
+      <div class="form-group row">
+        <label for="nama" class="col-sm-2 col-form-label">Nama</label>
+        <div class="col-sm-10">
+          <input type="text" name="nama" id="nama" class="form-control" value="{{ $pasien->nama }}" placeholder="Nama">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="nik" class="col-sm-2 col-form-label">NIK</label>
+        <div class="col-sm-10">
+          <input type="text" name="nik" id="nik" class="form-control" value="{{ $pasien->nik }}" placeholder="NIK">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="nrm" class="col-sm-2 col-form-label">No. Rekam Medis</label>
+        <div class="col-sm-10">
+          <input type="text" name="nrm" id="nrm" class="form-control" value="{{ $pasien->nrm }}" placeholder="No. Rekam Medis">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="kl" class="col-sm-2 col-form-label">Tempat Lahir</label>
+        <div class="col-sm-10">
+          <input type="text" name="kl" id="kl" class="form-control" value="{{ $pasien->kl }}" placeholder="Tempat Lahir">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="tl" class="col-sm-2 col-form-label">Tanggal Lahir</label>
+        <div class="col-sm-10">
+          <input type="text" name="tl" id="tl" class="form-control" value="{{ $pasien->tl }}" placeholder="Tanggal Lahir">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="add" class="col-sm-2 col-form-label">Alamat</label>
+        <div class="col-sm-10">
+          <textarea type="text" name="add" id="add" class="form-control" placeholder="Alamat">{{$pasien->add}}</textarea>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="wa" class="col-sm-2 col-form-label">Whatsapp</label>
+        <div class="col-sm-10">
+          <input type="text" name="wa" id="wa" class="form-control" value="{{ $pasien->wa }}" placeholder="Whatsapp">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="cp" class="col-sm-2 col-form-label">No. HP</label>
+        <div class="col-sm-10">
+          <input type="text" name="cp" id="cp" class="form-control" value="{{ $pasien->cp }}" placeholder="No. HP">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="py1" class="col-sm-2 col-form-label">Payment 1</label>
+        <div class="col-sm-10">
+          <input type="text" name="py1" id="py1" class="form-control" value="{{ $pasien->py1 }}" placeholder="Payment 1">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="py2" class="col-sm-2 col-form-label">Payment 2</label>
+        <div class="col-sm-10">
+          <input type="text" name="py2" id="py2" class="form-control" value="{{ $pasien->py2 }}" placeholder="Payment 2">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="da" class="col-sm-2 col-form-label">Alergi Obat</label>
+        <div class="col-sm-10">
+          <input type="text" name="da" id="da" class="form-control" value="{{ $pasien->da }}" placeholder="Alergi Obat">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="fa" class="col-sm-2 col-form-label">Alergi Makanan</label>
+        <div class="col-sm-10">
+          <input type="text" name="fa" id="fa" class="form-control" value="{{ $pasien->fa }}" placeholder="Alergi Makanan">
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-12">
+          <button type="submit" class="btn btn-block rounded-pill btn-primary">Submit</button>
+        </div>
+      </div>
 	  </form>
     </div>
   </div>
