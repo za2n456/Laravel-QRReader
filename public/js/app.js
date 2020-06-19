@@ -2872,6 +2872,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -87510,7 +87519,29 @@ var render = function() {
   return _vm.nama
     ? _c("div", { staticClass: "col-lg-12" }, [
         _vm.isAvailable === 1
-          ? _c("div", [_vm._m(0)])
+          ? _c("div", [
+              _vm._m(0),
+              _vm._v(" "),
+              _vm._m(1),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "collapse text-center",
+                  attrs: { id: "collapseExample" }
+                },
+                [
+                  _c("p", { staticClass: "error" }, [
+                    _vm._v(_vm._s(_vm.error))
+                  ]),
+                  _vm._v(" "),
+                  _c("qrcode-capture", {
+                    on: { decode: _vm.onDecode, init: _vm.onInit }
+                  })
+                ],
+                1
+              )
+            ])
           : _c("div", [
               _c("div", { staticClass: "card" }, [
                 _c(
@@ -87820,7 +87851,7 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
-                      _vm._m(1),
+                      _vm._m(2),
                       _vm._v(" "),
                       _c("span", [_vm._v(_vm._s(_vm.responseMessage))])
                     ]
@@ -87830,7 +87861,7 @@ var render = function() {
             ])
       ])
     : _c("div", { staticClass: "col-lg-12 px-0" }, [
-        _vm._m(2),
+        _vm._m(3),
         _vm._v(" "),
         _c(
           "div",
@@ -87841,7 +87872,7 @@ var render = function() {
           [
             _c("p", { staticClass: "error" }, [_vm._v(_vm._s(_vm.error))]),
             _vm._v(" "),
-            _c("qrcode-stream", {
+            _c("qrcode-capture", {
               on: { decode: _vm.onDecode, init: _vm.onInit }
             })
           ],
@@ -87880,6 +87911,30 @@ var staticRenderFns = [
         _vm._v("\n      Data pasien sudah tersedia di sistem.\n    ")
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "text-center" }, [
+      _c(
+        "a",
+        {
+          staticClass: "btn btn-primary",
+          attrs: {
+            "data-toggle": "collapse",
+            href: "#collapseExample",
+            role: "button",
+            "aria-expanded": "false",
+            "aria-controls": "collapseExample"
+          }
+        },
+        [
+          _c("i", { staticClass: "fa fa-camera" }),
+          _vm._v(" Scan QR Code\n      ")
+        ]
+      )
+    ])
   },
   function() {
     var _vm = this
