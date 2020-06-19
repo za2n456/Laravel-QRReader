@@ -5,7 +5,7 @@
 @section('content')
 <div class="container">
   <div class="row">
-  <div class="col-lg-12">
+  <div class="col-lg-12 px-0">
 
     <qr-scanner></qr-scanner>
 
