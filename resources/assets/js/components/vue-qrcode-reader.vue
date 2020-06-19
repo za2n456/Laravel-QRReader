@@ -1,7 +1,14 @@
 <template>
   <div v-if="nama" class="col-lg-12">
     <div v-if="isAvailable === 1">
-      <span>Data sudah tersedia.</span>
+      <div class="alert alert-danger alert-dismissable fade show" role="alert">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <h4>
+          <i class="icon fa fa-warning fa-fw" aria-hidden="true"></i>
+          Error
+        </h4>
+        Data pasien sudah tersedia di sistem.
+      </div>
     </div>
     <div v-else>
       <div class="card">

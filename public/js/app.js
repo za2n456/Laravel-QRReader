@@ -2862,6 +2862,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -87500,7 +87507,7 @@ var render = function() {
   return _vm.nama
     ? _c("div", { staticClass: "col-lg-12" }, [
         _vm.isAvailable === 1
-          ? _c("div", [_c("span", [_vm._v("Data sudah tersedia.")])])
+          ? _c("div", [_vm._m(0)])
           : _c("div", [
               _c("div", { staticClass: "card" }, [
                 _c("div", { staticClass: "card-body" }, [
@@ -87804,7 +87811,7 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
-                      _vm._m(0),
+                      _vm._m(1),
                       _vm._v(" "),
                       _c("span", [_vm._v(_vm._s(_vm.responseMessage))])
                     ]
@@ -87814,7 +87821,7 @@ var render = function() {
             ])
       ])
     : _c("div", { staticClass: "col-lg-12 px-0" }, [
-        _vm._m(1),
+        _vm._m(2),
         _vm._v(" "),
         _c(
           "div",
@@ -87834,6 +87841,37 @@ var render = function() {
       ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "alert alert-danger alert-dismissable fade show",
+        attrs: { role: "alert" }
+      },
+      [
+        _c(
+          "a",
+          {
+            staticClass: "close",
+            attrs: { href: "#", "data-dismiss": "alert", "aria-label": "close" }
+          },
+          [_vm._v("×")]
+        ),
+        _vm._v(" "),
+        _c("h4", [
+          _c("i", {
+            staticClass: "icon fa fa-warning fa-fw",
+            attrs: { "aria-hidden": "true" }
+          }),
+          _vm._v("\n        Error\n      ")
+        ]),
+        _vm._v("\n      Data pasien sudah tersedia di sistem.\n    ")
+      ]
+    )
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
