@@ -35,6 +35,10 @@
                     background-size: auto 100%;
                 }
             <?php endif; ?>
+            .wrapper {
+                margin-left: -20px;
+                margin-right: -20px;
+            }
 
         </style>
 

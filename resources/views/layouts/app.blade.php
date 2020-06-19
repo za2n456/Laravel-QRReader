@@ -35,10 +35,6 @@
                     background-size: auto 100%;
                 }
             @endif
-            .wrapper {
-                margin-left: -20px;
-                margin-right: -20px;
-            }
 
         </style>
 
@@ -66,7 +62,7 @@
 
                 <div class="container">
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-12 px-0">
                             @include('partials.form-status')
                         </div>
                     </div>
