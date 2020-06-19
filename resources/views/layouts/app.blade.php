@@ -35,6 +35,10 @@
                     background-size: auto 100%;
                 }
             @endif
+            .wrapper {
+                margin-left: -20px;
+                margin-right: -20px;
+            }
 
         </style>
 
@@ -58,7 +62,7 @@
 
             @include('partials.nav')
 
-            <main class="py-4">
+            <main>
 
                 <div class="container">
                     <div class="row">

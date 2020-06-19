@@ -8,7 +8,7 @@
       <span>Data sudah tersedia.</span>
     </div>
     <div v-else>
-      <div class="card">
+      <div class="card my-3">
         <div class="card-body">
           <form action="pasien/store" method="POST">
           <input type="hidden" name="_token" :value="csrf">

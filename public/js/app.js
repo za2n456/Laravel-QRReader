@@ -87502,7 +87502,7 @@ var render = function() {
           _vm.isAvailable === 1
             ? _c("div", [_c("span", [_vm._v("Data sudah tersedia.")])])
             : _c("div", [
-                _c("div", { staticClass: "card" }, [
+                _c("div", { staticClass: "card my-3" }, [
                   _c("div", { staticClass: "card-body" }, [
                     _c(
                       "form",
