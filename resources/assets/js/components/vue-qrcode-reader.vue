@@ -16,7 +16,7 @@
       </div>
       <div class="collapse text-center" id="collapseExample">
         <p class="error">{{ error }}</p>
-        <qrcode-capture @decode="onDecode" @init="onInit"/>
+        <qrcode-stream @decode="onDecode" @init="onInit"/>
       </div>
     </div>
     <div v-else>

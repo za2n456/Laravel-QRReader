@@ -87535,7 +87535,7 @@ var render = function() {
                     _vm._v(_vm._s(_vm.error))
                   ]),
                   _vm._v(" "),
-                  _c("qrcode-capture", {
+                  _c("qrcode-stream", {
                     on: { decode: _vm.onDecode, init: _vm.onInit }
                   })
                 ],
