@@ -21,25 +21,6 @@ class UsersTableSeeder extends Seeder
         $managerRole = Role::whereName('Manager')->first();
 
         // Seed test admin
-        $seededAdminEmail = 'mail@zazan.me';
-        $user = User::where('email', '=', $seededAdminEmail)->first();
-        if ($user === null) {
-            $user = User::create([
-                'name'                           => 'zazan',
-                'first_name'                     => 'Zazan',
-                'last_name'                      => 'Pratama',
-                'email'                          => 'mail@zazan.me',
-                'password'                       => Hash::make('Dianzan-2012'),
-                'token'                          => str_random(64),
-                'activated'                      => true,
-                'signup_confirmation_ip_address' => $faker->ipv4,
-                'admin_ip_address'               => $faker->ipv4,
-            ]);
-
-            $user->profile()->save($profile);
-            $user->attachRole($adminRole);
-            $user->save();
-        }
 
         // Seed test user
         $user = User::where('email', '=', 'user@user.com')->first();
