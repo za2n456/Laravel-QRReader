@@ -40,7 +40,7 @@ yarn.lock
 /storage/*.key
 /vendor
 /storage/debugbar
-#/storage/framework
+/storage/framework
 /storage/logs
 /storage/users
 packages/
