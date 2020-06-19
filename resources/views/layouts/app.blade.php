@@ -22,7 +22,7 @@
         @yield('template_linked_fonts')
 
         {{-- Styles --}}
-        <link href="{{ mix(asset('css/app.css')) }}" rel="stylesheet">
+        <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/css/mdb.min.css" rel="stylesheet">
         @yield('template_linked_css')
 
@@ -75,7 +75,7 @@
         </div>
 
         {{-- Scripts --}}
-        <script src="{{ mix(asset('js/app.js')) }}"></script>
+        <script src="{{ mix('/js/app.js') }}"></script>
 
         @yield('footer_scripts')
 
